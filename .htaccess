@@ -1,0 +1,9 @@
+#LINK AMIGÁVEL
+RewriteEngine On
+
+#Regras: se não existir arquivo ou diretório com o endereço fornecido
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Reescrever URL, adicionando o query string
+RewriteRule ^(.*) ./index.php?url=$1 [QSA]

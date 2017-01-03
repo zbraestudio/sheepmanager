@@ -1,0 +1,17 @@
+{
+  "name": "deepmanager",
+  "homepage": "https://github.com/zbraestudio/deepmanager",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "PHPMailer": "https://github.com/PHPMailer/PHPMailer.git#^5.2.21"
+  }
+}
