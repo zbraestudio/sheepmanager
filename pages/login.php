@@ -1,4 +1,5 @@
 <?
+set_config('TITLE', 'Login');
 include(get_config('SITE_PATH') . 'includes/html.head.php');
 ?>
 

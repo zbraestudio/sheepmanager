@@ -11,8 +11,8 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                     <span class="block m-t-xs">
-                                        <strong class="font-bold">David Williams</strong>
-                                    </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                                        <strong class="font-bold">Bruno Gonçalves</strong>
+                                    </span> <span class="text-muted text-xs block">Pastor <b class="caret"></b></span>
                                 </span>
             </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -27,7 +27,7 @@
             SM
           </div>
         </li>
-        <li class="active">
+        <!--<li class="active">
           <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="index.html">Dashboard v.1</a></li>
@@ -36,10 +36,62 @@
             <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
             <li><a href="dashboard_5.html">Dashboard v.5 <span class="label label-primary pull-right">NEW</span></a></li>
           </ul>
-        </li>
+        </li> -->
         <li>
-          <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+          <a href="<?= GetLink('dashboard'); ?>" title="Painel"><i class="fa fa-th-large"></i> <span class="nav-label">Painel</span></a>
         </li>
+
+
+        <li>
+          <a href="javascript:void(0);" title="Agenda"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+          </ul>
+        </li>
+
+
+        <li>
+          <a href="javascript:void(0);" title="Membros"><i class="fa fa-users"></i> <span class="nav-label">Membros</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar Relatório</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" title="Financeiro"><i class="fa fa-th-large"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-level-up"></i> Entradas</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-level-down"></i> Saídas</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" title="Biblioteca"><i class="fa fa-book"></i> <span class="nav-label">Biblioteca</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0);" title="Videoteca"><i class="fa fa-video-camera"></i> <span class="nav-label">Videoteca</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+          </ul>
+        </li>
+
+        <!--
         <li>
           <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse">
@@ -230,6 +282,8 @@
         <li class="special_link">
           <a href="package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
         </li>
+
+        -->
       </ul>
 
     </div>

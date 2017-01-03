@@ -17,9 +17,9 @@ if( $_SERVER['HTTP_HOST'] == 'localhost'){
 } else {
 }
 
-
-set_config('TITLE',            'Sheep Manager v1');
-set_config('FOOTER_TEXT',            'Sheep Manager v1 - 2016 - Todos os Direitos Reservados.');
+set_config('TITLE',                   '');
+set_config('SYSTEM_TITLE',            'Sheep Manager');
+set_config('FOOTER_TEXT',            '<strong>Sheep Manager</strong> v1 - &copy; 2017 - Todos os Direitos Reservados.');
 
 /* Banco de Dados */
 if( $_SERVER['HTTP_HOST'] == 'localhost')

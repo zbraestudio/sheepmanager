@@ -6,7 +6,7 @@ include('functions.php');
 include('girafa.db.php');
 include('girafa.tablepost.php');
 
-$db = new nbrDB(get_config('DB_HOST'), get_config('DB_DB'), get_config('DB_USER'), get_config('DB_PASS'));
+//$db = new nbrDB(get_config('DB_HOST'), get_config('DB_DB'), get_config('DB_USER'), get_config('DB_PASS'));
 
 /* Envia E-mail */
 require_once(get_config('SITE_PATH') . 'bower_components/PHPMailer/PHPMailerAutoload.php');
