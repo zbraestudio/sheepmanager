@@ -54,6 +54,13 @@
           </ul>
         </li>
 
+        <li>
+          <a href="javascript:void(0);" title="Financeiro"><i class="fa fa-th-large"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="javascript:void(0);"><i class="fa fa-level-up"></i> Entradas</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-level-down"></i> Saídas</a></li>
+          </ul>
+        </li>
 
         <li>
           <a href="javascript:void(0);" title="Membros"><i class="fa fa-users"></i> <span class="nav-label">Membros</span> <span class="fa arrow"></span></a>
@@ -63,6 +70,7 @@
           </ul>
         </li>
 
+
         <li>
           <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
@@ -71,13 +79,7 @@
           </ul>
         </li>
 
-        <li>
-          <a href="javascript:void(0);" title="Financeiro"><i class="fa fa-th-large"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level">
-            <li><a href="javascript:void(0);"><i class="fa fa-level-up"></i> Entradas</a></li>
-            <li><a href="javascript:void(0);"><i class="fa fa-level-down"></i> Saídas</a></li>
-          </ul>
-        </li>
+
 
         <li>
           <a href="javascript:void(0);" title="Biblioteca"><i class="fa fa-book"></i> <span class="nav-label">Biblioteca</span> <span class="fa arrow"></span></a>
