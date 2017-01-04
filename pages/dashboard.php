@@ -3,7 +3,7 @@ set_config('TITLE', 'Painel');
 template_getHeader();
 ?>
 
-
+<div class="wrapper wrapper-content">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
@@ -197,7 +197,7 @@ template_getHeader();
 
 
             </div>
-
+</div>
 
 
 

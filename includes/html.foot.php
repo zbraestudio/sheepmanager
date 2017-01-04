@@ -39,3 +39,8 @@
 
 <!-- Sparkline demo data  -->
 <script src="<?= get_config('SITE_URL'); ?>js/demo/sparkline-demo.js"></script>
+
+
+<!-- @tihhgoncalves - GRID -->
+<script src="<?= get_config('SITE_URL'); ?>js/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="<?= get_config('SITE_URL'); ?>js/plugins/dataTables/datatables.min.js"></script>

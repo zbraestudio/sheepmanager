@@ -11,6 +11,8 @@
     <link href="<?= get_config('SITE_URL'); ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= get_config('SITE_URL'); ?>font-awesome/css/font-awesome.css" rel="stylesheet">
 
+    <link href="<?= get_config('SITE_URL'); ?>css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
     <link href="<?= get_config('SITE_URL'); ?>css/animate.css" rel="stylesheet">
     <link href="<?= get_config('SITE_URL'); ?>css/style.css" rel="stylesheet">
 
