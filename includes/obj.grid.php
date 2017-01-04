@@ -19,14 +19,14 @@ class girafaGRID{
         $html  = '<div class="row wrapper border-bottom white-bg page-heading table-header">' . "\r\n";
         $html .= '  <div class="col-lg-10">' . "\r\n";
         $html .= '    <h2>' . $this->title . '</h2>' . "\r\n";
-        /*$html .= '    <ol class="breadcrumb">' . "\r\n";
+        $html .= '    <ol class="breadcrumb">' . "\r\n";
         $html .= '      <li>' . "\r\n";
-        $html .= '        <a>Membros</a>' . "\r\n";
+        $html .= '        <a>' . $this->title . '</a>' . "\r\n";
         $html .= '      </li>' . "\r\n";
         $html .= '      <li class="active">' . "\r\n";
         $html .= '        <strong>Ver todos</strong>' . "\r\n";
         $html .= '      </li>' . "\r\n";
-        $html .= '    </ol>' . "\r\n"; */
+        $html .= '    </ol>' . "\r\n";
         $html .= '  </div>' . "\r\n";
         $html .= '  <div class="col-lg-2">' . "\r\n";
         $html .= '<a href="' . GetLink(GetPage() . '/add') . '" class="btn btn-success btn-novo"><i class="fa fa-plus" aria-hidden="true"></i> Novo</a>' . "\r\n";
@@ -48,7 +48,7 @@ class girafaGRID{
         $html .= '      <div class="ibox float-e-margins">' . "\r\n";
         $html .= '        <div class="ibox-content">' . "\r\n";
         $html .= '          <div class="table-responsive">' . "\r\n";
-        $html .= '            <table class="table table-striped table-bordered table-hover dataTables-example">' . "\r\n";
+        $html .= '            <table class="table table-striped table-bordered table-hover grid_' . $this->code . '">' . "\r\n";
         $this->html .= $html;
 
         //legendas do início
@@ -124,7 +124,7 @@ class girafaGRID{
         <!-- Imprime JS do GRID -->
         <script>
             $(document).ready(function(){
-                $('.dataTables-example').DataTable({
+                $('.grid_<?= $this->code; ?>').DataTable({
                     dom: '<"html5buttons"B>lTfgitp',
                     buttons: [
                         { extend: 'copy'},
@@ -159,38 +159,10 @@ class girafaGRID{
 
                 });
 
-                /* Init DataTables */
-                var oTable = $('#editable').DataTable();
-
-                /* Apply the jEditable handlers to the table */
-                oTable.$('td').editable( '../example_ajax.php', {
-                    "callback": function( sValue, y ) {
-                        var aPos = oTable.fnGetPosition( this );
-                        oTable.fnUpdate( sValue, aPos[0], aPos[1] );
-                    },
-                    "submitdata": function ( value, settings ) {
-                        return {
-                            "row_id": this.parentNode.getAttribute('id'),
-                            "column": oTable.fnGetPosition( this )[2]
-                        };
-                    },
-
-                    "width": "90%",
-                    "height": "100%"
-                } );
 
 
             });
 
-            function fnClickAddRow() {
-                $('#editable').dataTable().fnAddData( [
-                    "Custom row",
-                    "New row",
-                    "New row",
-                    "New row",
-                    "New row" ] );
-
-            }
         </script>
 
         <?
