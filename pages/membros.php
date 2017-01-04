@@ -12,12 +12,11 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){
 template_getHeader();
 
 if (GetParam(0) == 'edit') {
-    $sql = 'SELECT * FROM Membros WHERE ID = ' . intval(GetParam(1));
+    $sql = 'SELECT * FROM Membros WHERE ID = ' . intval(GetParam(1)) . ' AND Igreja = ' . $login->church_id;
     $res = $db->LoadObjects($sql);
 
     if (count($res) <= 0) {
-        header('LOCATION:' . GetLink('membros'));
-        exit;
+        die('<h4>Você não tem permissão pra visualizar esse registro!</h4>');
     }
 
     $reg = $res[0];
@@ -348,7 +347,9 @@ if (GetParam(0) == 'edit') {
     $grid->legends = array('Nome Completo', 'Apelido', 'E-mail');
 
 
-    $sql = 'SELECT * FROM Membros ORDER BY Nome ASC';
+    $sql = 'SELECT * FROM Membros';
+    $sql .= ' WHERE Igreja = ' . $login->church_id;
+    $sql .= ' ORDER BY Nome ASC';
     $pessoas = $db->LoadObjects($sql);
 
     foreach($pessoas as $pessoa) {
