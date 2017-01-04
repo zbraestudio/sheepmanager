@@ -79,6 +79,10 @@ if(GetParam(0) == 'add'){
                                     </select>
                                 </div>
 
+                                <label class="col-sm-2 control-label">E-mail</label>
+
+                                <div class="col-sm-5"><input type="email" class="form-control" name="Nome" required></div>
+
                             </div>
 
 
@@ -177,9 +181,9 @@ if(GetParam(0) == 'add'){
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">RG</label>
-                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome"></div>
                                 <label class="col-sm-4 control-label">CPF</label>
-                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome"></div>
 
                             </div>
 
@@ -203,13 +207,13 @@ if(GetParam(0) == 'add'){
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Nascimento</label>
-                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome"></div>
 
                                 <label class="col-sm-4 control-label">Batismo</label>
-                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome"></div>
 
                                 <label class="col-sm-4 control-label">Casamento</label>
-                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome"></div>
 
                             </div>
 

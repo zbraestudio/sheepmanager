@@ -66,4 +66,7 @@
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/jeditable/jquery.jeditable.js"></script>
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/dataTables/datatables.min.js"></script>
 
+
+    <script src="<?= get_config('SITE_URL'); ?>js/form.js"></script>
+
 </head>
