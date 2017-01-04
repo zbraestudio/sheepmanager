@@ -1,7 +1,6 @@
 <?
 set_config('TITLE', 'Painel');
-include(get_config('SITE_PATH') . 'includes/html.head.php');
-include(get_config('SITE_PATH') . 'includes/html.header.php');
+template_getHeader();
 ?>
 
 
@@ -203,8 +202,7 @@ include(get_config('SITE_PATH') . 'includes/html.header.php');
 
 
 <?
-include(get_config('SITE_PATH') . 'includes/html.footer.php');
-include(get_config('SITE_PATH') . 'includes/html.foot.php');
+template_getFooter();
 ?>
 
 

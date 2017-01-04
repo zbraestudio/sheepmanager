@@ -27,12 +27,28 @@ function GetParamsArray(){
 
 }
 
+function GetParam($key){
+  $p = GetParamsArray();
+  return @$p[$key];
+}
+
 function nl2p($string)
 {
   $string = str_replace(array('<p>', '</p>', '<br>', '<br />'), '', $string);
 
     return '<p>'.preg_replace("/([\n]{1,})/i", "</p>\n<p>", trim($string)).'</p>';
 }
+
+function template_getHeader(){
+  include(get_config('SITE_PATH') . 'includes/html.head.php');
+  include(get_config('SITE_PATH') . 'includes/html.header.php');
+}
+
+function template_getFooter(){
+  include(get_config('SITE_PATH') . 'includes/html.footer.php');
+  include(get_config('SITE_PATH') . 'includes/html.foot.php');
+}
+
 
 
 ?>

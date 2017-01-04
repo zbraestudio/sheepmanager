@@ -7,7 +7,7 @@
           <div class="dropdown profile-element">
 
           <span>
-              <img class="logo" src="img/logo.png" />
+              <img class="logo" src="<?= get_config('SITE_URL')?>img/logo.png" />
           </span>
 
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -41,12 +41,12 @@
             <li><a href="dashboard_5.html">Dashboard v.5 <span class="label label-primary pull-right">NEW</span></a></li>
           </ul>
         </li> -->
-        <li>
+        <li <?= GetPage() == 'dasboard'?'class="active"':null; ?>>
           <a href="<?= GetLink('dashboard'); ?>" title="Painel"><i class="fa fa-th-large"></i> <span class="nav-label">Painel</span></a>
         </li>
 
 
-        <li>
+        <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Agenda"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
@@ -54,24 +54,23 @@
           </ul>
         </li>
 
-        <li>
+        <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Financeiro"><i class="fa fa-th-large"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="javascript:void(0);"><i class="fa fa-level-up"></i> Entradas</a></li>
             <li><a href="javascript:void(0);"><i class="fa fa-level-down"></i> Saídas</a></li>
           </ul>
         </li>
-
-        <li>
+        <li <?= GetPage() == 'membros'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Membros"><i class="fa fa-users"></i> <span class="nav-label">Membros</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
-            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+            <li><a href="<?= GetLink('membros/add'); ?>"><i class="fa fa-plus"></i> Adicionar</a></li>
+            <li><a href="<?= GetLink('membros'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
           </ul>
         </li>
 
 
-        <li>
+        <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar Relatório</a></li>
@@ -81,7 +80,7 @@
 
 
 
-        <li>
+        <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Biblioteca"><i class="fa fa-book"></i> <span class="nav-label">Biblioteca</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
@@ -89,7 +88,7 @@
           </ul>
         </li>
 
-        <li>
+        <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Videoteca"><i class="fa fa-video-camera"></i> <span class="nav-label">Videoteca</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
@@ -318,7 +317,7 @@
               <li>
                 <div class="dropdown-messages-box">
                   <a href="profile.html" class="pull-left">
-                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                    <img alt="image" class="img-circle" src="<?= get_config('SITE_URL')?>img/a7.jpg">
                   </a>
                   <div>
                     <small class="pull-right">46h ago</small>
@@ -331,7 +330,7 @@
               <li>
                 <div class="dropdown-messages-box">
                   <a href="profile.html" class="pull-left">
-                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                    <img alt="image" class="img-circle" src="<?= get_config('SITE_URL')?>img/a4.jpg">
                   </a>
                   <div>
                     <small class="pull-right text-navy">5h ago</small>
@@ -344,7 +343,7 @@
               <li>
                 <div class="dropdown-messages-box">
                   <a href="profile.html" class="pull-left">
-                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                    <img alt="image" class="img-circle" src="<?= get_config('SITE_URL')?>img/profile.jpg">
                   </a>
                   <div>
                     <small class="pull-right">23h ago</small>
