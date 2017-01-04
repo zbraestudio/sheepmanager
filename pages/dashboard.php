@@ -1,4 +1,5 @@
 <?
+
 set_config('TITLE', 'Painel');
 template_getHeader();
 ?>

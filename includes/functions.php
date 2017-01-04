@@ -55,25 +55,40 @@ function GeraLinkAmigavel($texto)
   $texto = trim($texto);
 
   //Tira acentos
-  $comAcento = array('O','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ñ','ò','ó','ô','õ','ö','ù','ü','ú','ÿ','À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ñ','Ò','Ó','Ô','Õ','Ö','O','Ù','Ü','Ú','Ÿ','&', 'ª', 'º', '%');
+  $comAcento = array('O','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','ï¿½','O','ï¿½','ï¿½','ï¿½','ï¿½','&', 'ï¿½', 'ï¿½', '%');
   $semAcento = array('o','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','n','o','o','o','o','o','u','u','u','y','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','N','O','O','O','O','O','0','U','U','U','Y','e', 'a', 'o', 'perc');
   $texto = str_replace($comAcento, $semAcento, $texto);
 
   //Anula alguns acaracters
-  $texto = str_replace(array('?', '!', ':', ';', '~', '`', '´', '{', '}', '[', ']', '/', '\\', ',', '(', ')', '"'), '', $texto);
+  $texto = str_replace(array('?', '!', ':', ';', '~', '`', 'ï¿½', '{', '}', '[', ']', '/', '\\', ',', '(', ')', '"'), '', $texto);
 
-  //Substitui espaços
+  //Substitui espaï¿½os
   $texto = str_replace(' ', '-', $texto);
 
-  //Eleminia ífens duplicados
+  //Eleminia ï¿½fens duplicados
   $texto = str_replace('--', '-', $texto);
 
-  //Passa pra minúsculo
+  //Passa pra minï¿½sculo
   $texto = strtolower($texto);
 
   return $texto;
 }
 
+function dataDDMMYYYYtoYYYYMMDD($data){
 
+  if(empty($data))
+    return null;
+
+  return substr($data, 6, 4) . '-' . substr($data, 3, 2) . '-' . substr($data, 0, 2);
+
+}
+
+function dataYYYYMMDDtoDDMMYYYY($data){
+  if(empty($data))
+    return null;
+
+  return substr($data, 8, 2) . '/' . substr($data, 5, 2) . '/' . substr($data, 0, 4);
+
+}
 
 ?>

@@ -1,3 +1,9 @@
+<?
+global $login;
+
+$login->verify();
+
+?>
 <body>
 <div id="wrapper">
   <nav class="navbar-default navbar-static-side" role="navigation">
@@ -14,17 +20,15 @@
 
               <span class="clear">
                   <span class="block m-t-xs">
-                      <strong class="font-bold">Bruno Gonçalves</strong>
-                  </span> <span class="text-muted text-xs block">Pastor <b class="caret"></b></span>
+                      <strong class="font-bold"><?= $login->user_name; ?></strong>
+                  </span> <span class="text-muted text-xs block"><?= $login->church_name; ?> <b class="caret"></b></span>
               </span>
 
             </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-              <li><a href="profile.html">Profile</a></li>
-              <li><a href="contacts.html">Contacts</a></li>
-              <li><a href="mailbox.html">Mailbox</a></li>
+              <li><a href="javascript:alert('Essa opção está indisponível no momento.');">Configurações</a></li>
               <li class="divider"></li>
-              <li><a href="login.html">Logout</a></li>
+              <li><a href="<?= get_config('SITE_URL'); ?>/script/logout.php">Sair</a></li>
             </ul>
           </div>
           <div class="logo-element">

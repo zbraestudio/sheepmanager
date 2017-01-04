@@ -5,7 +5,7 @@ include('includes/autoload.php');
 if(empty($_GET['url']))
     header('LOCATION: ' . get_config('SITE_URL') . 'login');
 
-//divide parâmetros da URL
+//divide parÃ¢metros da URL
 $params = explode('/', $_GET['url']);
 include(get_config('SITE_PATH') . 'pages/' . GetPage(true));
 ?>

@@ -33,4 +33,4 @@ else
 
 set_config('DB_USER'          , 'root');
 set_config('DB_PASS'          , 'nwtiago');
-set_config('DB_DB'            , 'deepmanager');
+set_config('DB_DB'            , 'sheepmanager');

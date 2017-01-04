@@ -3,12 +3,16 @@ session_start();
 
 include('config.php');
 include('functions.php');
+include('functions.form.php');
+include('girafa.login.php');
 include('girafa.db.php');
 include('girafa.tablepost.php');
 
 include('obj.grid.php');
 
-//$db = new nbrDB(get_config('DB_HOST'), get_config('DB_DB'), get_config('DB_USER'), get_config('DB_PASS'));
+/* Objetos Girafa */
+$db = new girafaDB(get_config('DB_HOST'), get_config('DB_DB'), get_config('DB_USER'), get_config('DB_PASS'));
+$login = new girafaLOGIN();
 
 /* Envia E-mail */
 require_once(get_config('SITE_PATH') . 'bower_components/PHPMailer/PHPMailerAutoload.php');

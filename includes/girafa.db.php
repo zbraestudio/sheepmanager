@@ -1,6 +1,6 @@
 <?
 
-class nbrDB
+class girafaDB
 {
   const version = '2.0';
 
@@ -26,9 +26,9 @@ class nbrDB
 
     //Verifica se é persistente e gerencia conexão (no caso verifica se tem uma semelhante já aberta)
     if($this->_persistent) {
-      global $nbrDB_conns;
+      global $girafaDB_conns;
 
-      foreach ($nbrDB_conns as $conn){
+      foreach ($girafaDB_conns as $conn){
         if($conn->host == $this->host
                                 && $conn->pass == $this->pass
                                 && $conn ->user == $this->user
@@ -41,13 +41,13 @@ class nbrDB
 
     //Verifica se extensão está habilitada no PHP
     if(!function_exists('mysql_connect'))
-      throw new Exception('nbrDB: A extensão mysql de conexão com o banco de dados não está habilitada no seu servidor.');
+      throw new Exception('girafaDB: A extensão mysql de conexão com o banco de dados não está habilitada no seu servidor.');
 
     $this->connection = mysqli_connect($this->host, $this->user, $this->pass);
 
     if($this->connection === false){
       $this->_setErrorMsg();
-      throw new Exception('nbrDB: Ocorreu um erro ao tentar conectar a seu banco de dados MySql.');
+      die('girafaDB: Ocorreu um erro ao tentar conectar a seu banco de dados MySql.');
     }
 
     $selectionDb = mysqli_select_db($this->connection, $this->database);
@@ -57,19 +57,19 @@ class nbrDB
 
     if($selectionDb === false){
       $this->_setErrorMsg();
-      throw new Exception('nbrDB: Ocorreu um erro ao tentar selecionar um database ao seu banco de dados.');
+      throw new Exception('girafaDB: Ocorreu um erro ao tentar selecionar um database ao seu banco de dados.');
     }
 
     //Se for conexão persistente joga conexao no cache
     if($this->_persistent)
-      array_push($nbrDB_conns, $this);
+      array_push($girafaDB_conns, $this);
   }
 
   public function _read($sql){
 
     //Verifica se é um sql de SELECT
     if((strpos(strtolower($sql), 'select') === false) && (strpos(strtolower($sql), 'call') === false))
-      throw new Exception('nbrDB: Você só pode fazer uma consulta ao banco dados utilizando um sql de SELECT');
+      throw new Exception('girafaDB: Você só pode fazer uma consulta ao banco dados utilizando um sql de SELECT');
 
     return mysqli_query($this->connection, $sql);
 
@@ -104,7 +104,7 @@ class nbrDB
     if($resource === false)
     {
       $this->_setErrorMsg();
-      throw new Exception('nbrDB: Não foi possível concluir a execução do comando enviado ao banco de dados:' . $sql);
+      throw new Exception('girafaDB: Não foi possível concluir a execução do comando enviado ao banco de dados:' . $sql);
     }
     return true;
   }
@@ -113,7 +113,7 @@ class nbrDB
   {
     //Verifica se última ação foi um insert
     if(strpos(strtoupper($this->sql), 'INSERT') === false)
-      throw new Exception('nbrDB: Você só pode solicitar o ID inserido após ter executado um comando INSERT no banco de dados.');
+      throw new Exception('girafaDB: Você só pode solicitar o ID inserido após ter executado um comando INSERT no banco de dados.');
 
     return mysqli_insert_id($this->connection);
   }
@@ -149,14 +149,14 @@ class nbrDB
   {
     //Verifica se é persistente e verifica se na global ainda existe esta conexao
     if($this->_persistent){
-      global $nbrDB_conns;
+      global $girafaDB_conns;
 
       //Re-ordena os �ndices
-      sort($nbrDB_conns);
+      sort($girafaDB_conns);
 
       $encontrou = false;
-      for($i = 0; $i < count($nbrDB_conns); $i++){
-        $conn = $nbrDB_conns[$i];
+      for($i = 0; $i < count($girafaDB_conns); $i++){
+        $conn = $girafaDB_conns[$i];
 
         if($conn->host == $this->host
                                 && $conn->pass == $this->pass
@@ -165,7 +165,7 @@ class nbrDB
         {
           $encontrou = true;
           //Exclui da global a conex�o
-          unset($nbrDB_conns[$i]);
+          unset($girafaDB_conns[$i]);
         }
       }
 
@@ -214,21 +214,21 @@ class nbrDB
   }
 }
 
-global $nbrDB_conns;
-$nbrDB_conns = array();
+global $girafaDB_conns;
+$girafaDB_conns = array();
 
 /**
  * Função executada quando o script de PHP chegar ao fim (irá desconectar TODAS as conexões persistentes abertas)
  *
  */
-function nbrDB_shutdown(){
-  global $nbrDB_conns;
+function girafaDB_shutdown(){
+  global $girafaDB_conns;
 
-  for($i = 0; $i < count($nbrDB_conns); $i++)
+  for($i = 0; $i < count($girafaDB_conns); $i++)
   {
-    $conn = $nbrDB_conns[$i];
+    $conn = $girafaDB_conns[$i];
     $conn->Close();
   }
 }
-register_shutdown_function('nbrDB_shutdown');
+register_shutdown_function('girafaDB_shutdown');
 ?>

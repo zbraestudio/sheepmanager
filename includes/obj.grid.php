@@ -6,7 +6,7 @@ class girafaGRID{
     private $code;
 
     public $legends = array();
-    public $values = array();
+    private $values = array();
 
     public $html = null;
 
@@ -35,8 +35,23 @@ class girafaGRID{
 
         $this->html .= $html;
 
+        if(isset($_SESSION['grid_msg'])) {
+
+            $this->html .= '<div class="wrapper wrapper-content msg-form">';
+            $this->html .= '  <div class="alert alert-success" role="alert">' . $_SESSION['grid_msg'] . '</div>';
+            $this->html .= '</div>';
+
+            unset($_SESSION['grid_msg']);
+        }
+
     }
 
+    public function addValues($values, $id = -1){
+        $this->values[] = array(
+            'id' => $id,
+            'values' => $values
+        );
+    }
 
     public function PrintHTML(){
 
@@ -67,18 +82,40 @@ class girafaGRID{
 
         foreach($this->values as $value) {
 
-            $fields = $value;
+            $fields = $value['values'];
+            $id = $value['id'];
 
             $html .= '<tr class="gradeX">' . "\r\n";
 
             foreach($fields as $field) {
-                $html .= '  <td>' . $field . '</td>' . "\r\n";
+
+                switch($field->align) {
+                    case 'L':
+                        $align = 'left';
+                        break;
+                    case 'C':
+                        $align = 'center';
+                        break;
+                    case 'R':
+                        $align = 'right';
+                        break;
+                }
+
+                if(intval($field->width) <= 0)
+                    $style_width = null;
+                else {
+                    $style_width = 'width:' . intval($field->width) . 'px;';
+                }
+
+                $html .= '  <td style="text-align:' . $align . ';' . $style_width . '">';
+                $html .= $field->value;
+                $html .= '</td>' . "\r\n";
             }
 
             //Ações
             $html .= '  <td class="grid_action" style="text-align: center;">';
-            $html .= '<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
-            $html .= '<a href="#"><i class="fa fa fa-trash" aria-hidden="true"></i></a>';
+            $html .= '<a href="' . GetLink(GetPage() . '/edit/' . $id) . '"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+            $html .= '<a href="' . GetLink(GetPage() . '/del/' . $id) . '" data-toggle="confirmation" data-popout="true" data-singleton="true" data-title="Tem certeza que deseja excluir esse registro?"><i class="fa fa fa-trash" aria-hidden="true"></i></a>';
             $html .= '  </td>' . "\r\n";
 
             $html .= '</tr>' . "\r\n";
@@ -166,6 +203,30 @@ class girafaGRID{
         </script>
 
         <?
+    }
+
+
+}
+
+
+class girafaGRID_field{
+
+    public $value;
+    public $align = 'L';
+    public $width = 0;
+
+    function girafaGRID_field($value){
+        $this->value = $value;
+    }
+
+    function alignLeft(){
+        $this->align = 'L';
+    }
+    function alignCenter(){
+        $this->align = 'C';
+    }
+    function alignRight(){
+        $this->align = 'R';
     }
 
 

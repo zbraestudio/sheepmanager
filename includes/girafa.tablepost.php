@@ -1,5 +1,5 @@
 <?
-class TablePost{
+class girafaTablePost{
   private $fields = array();
 
   public $table;
@@ -7,7 +7,7 @@ class TablePost{
 
   public function GetSql(){
 
-    //Inserção ou Atualização..
+    //InserÃ§Ã£o ou AtualizaÃ§Ã£o..
     if($this->id > 0){
 
       $sql   = 'UPDATE ' . $this->table . ' SET ';

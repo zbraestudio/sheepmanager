@@ -16,19 +16,31 @@ include(get_config('SITE_PATH') . 'includes/html.head.php');
         <p>
             Preencha abaixo com suas credenciais para acessar a administração de sua igreja.
         </p>
-        <form class="m-t" role="form" action="<?= get_config('SITE_URL'); ?>dashboard">
+        <form class="m-t" role="form" method="post" action="<?= get_config('SITE_URL'); ?>script/login.php">
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Seu e-mail" required="">
+                <input type="email" class="form-control" placeholder="Seu e-mail" name="mail" required="">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Sua senha" required="">
+                <input type="password" class="form-control" placeholder="Sua senha" name="pass" required="">
             </div>
+
+            <?
+            if(isset($_SESSION['login_msg'])) {
+                ?>
+                <div class="alert alert-danger" role="alert"><?= $_SESSION['login_msg']; ?></div>
+            <?
+                unset($_SESSION['login_msg']);
+            }
+                ?>
+
+
             <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
             <a href="#"><small>Esqueceu sua senha?</small></a>
             <p class="text-muted text-center"><small>Sua igreja ainda não utiliza o nosso sistema?</small></p>
             <a class="btn btn-sm btn-white btn-block" href="register.html">Crie uma conta pra sua igreja agora</a>
         </form>
+
         <p class="m-t"> <small><?= get_config('FOOTER_TEXT')?></small> </p>
     </div>
 </div>
