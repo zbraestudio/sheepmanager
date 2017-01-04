@@ -9,7 +9,7 @@ include(get_config('SITE_PATH') . 'includes/html.head.php');
     <div>
         <div>
 
-            <h1 class="logo-name">Deep Manager</h1>
+            <img class="logo" src="img/logo_login.png" />
 
         </div>
         <h3>Bem vindo ao Deep Manager</h3>

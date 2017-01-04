@@ -11,8 +11,8 @@ function get_config($key){
 /* Caminhos */
 if( $_SERVER['HTTP_HOST'] == 'localhost'){
 
-  set_config('SITE_URL'         , 'http://localhost/github/deepmanager/');
-  set_config('SITE_PATH'        , 'D:/github/deepmanager/');
+  set_config('SITE_URL'         , 'http://localhost/github/sheepmanager/');
+  set_config('SITE_PATH'        , 'D:/github/sheepmanager/');
 
 } else {
 }

@@ -7,7 +7,7 @@
           <div class="dropdown profile-element">
 
           <span>
-              <img src="img/logo.png" />
+              <img class="logo" src="img/logo.png" />
           </span>
 
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
