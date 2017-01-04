@@ -6,6 +6,8 @@ include('functions.php');
 include('girafa.db.php');
 include('girafa.tablepost.php');
 
+include('obj.grid.php');
+
 //$db = new nbrDB(get_config('DB_HOST'), get_config('DB_DB'), get_config('DB_USER'), get_config('DB_PASS'));
 
 /* Envia E-mail */

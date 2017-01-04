@@ -1,3 +1,12 @@
+.table-header .btn-novo {
+  margin-top: 20px;
+}
+table.table .grid_action a {
+  padding: 5px;
+}
+table.table .grid_action a i {
+  font-size: 13px;
+}
 body.pg_login img.logo {
   margin: 50px 0;
 }
