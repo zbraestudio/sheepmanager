@@ -89,15 +89,79 @@ if(GetParam(0) == 'add'){
                         <div class="hr-line-dashed"></div>
 
                         <h3 class="m-t-none m-b">Endereço</h3>
-                        <p>[campos do endereço]</p>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Logradouro</label>
+
+                            <div class="col-sm-7"><input type="text" class="form-control" name="Nome" required></div>
+
+                            <label class="col-sm-1 control-label">Complemento</label>
+                            <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+
+                            <label class="col-sm-2 control-label">Cidade</label>
+
+                            <div class="col-sm-7"><input type="text" class="form-control" name="Nome" required></div>
+
+                            <label class="col-sm-1 control-label">UF</label>
+                            <div class="col-sm-2">
+                                <select class="form-control m-b" name="account" required>
+                                    <option value="">Selecione</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espirito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+
+
+                            <label class="col-sm-2 control-label">CEP</label>
+
+                            <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+
+                        </div>
+
 
                         <div class="hr-line-dashed"></div>
 
                         <h3 class="m-t-none m-b">Datas</h3>
-                        <p>[campos do datas]</p>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Data Nasc.</label>
+                            <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+
+                            <label class="col-sm-2 control-label">Data Batismo</label>
+                            <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+
+                            <label class="col-sm-2 control-label">Data Casamento</label>
+                            <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+
+                        </div>
 
 
-                        <div class="hr-line-dashed"></div>
+                            <div class="hr-line-dashed"></div>
 
                         <div class="form-group">
 

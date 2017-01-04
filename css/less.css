@@ -7,6 +7,15 @@ table.table .grid_action a {
 table.table .grid_action a i {
   font-size: 13px;
 }
+form .form-group > div {
+  margin-bottom: 10px;
+}
+form .form-group label.control-label {
+  margin-bottom: 10px;
+}
+form .form-group select.form-control {
+  margin-bottom: 10px;
+}
 body.pg_login img.logo {
   margin: 50px 0;
 }
