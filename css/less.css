@@ -16,6 +16,9 @@ form .form-group label.control-label {
 form .form-group select.form-control {
   margin-bottom: 10px;
 }
+form .btn-actions {
+  margin-right: 15px;
+}
 body.pg_login img.logo {
   margin: 50px 0;
 }
