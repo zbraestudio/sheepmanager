@@ -17,7 +17,7 @@ if( $_SERVER['HTTP_HOST'] == 'localhost'){
 } else {
 
   set_config('SITE_URL'         , 'http://sheepmanager.zbraestudio.com.br');
-  set_config('SITE_PATH'        , '/dados/http/braestudio.com.br/sheepmanager/');
+  set_config('SITE_PATH'        , '/dados/http/zbraestudio.com.br/sheepmanager/');
 
 }
 
