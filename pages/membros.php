@@ -34,6 +34,8 @@ if(GetParam(0) == 'add'){
 
             <form method="post" class="form-horizontal" action="#">
 
+
+                <!-- Dados -->
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -88,6 +90,7 @@ if(GetParam(0) == 'add'){
                     </div>
                 </div>
 
+                <!-- Endereço -->
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -158,7 +161,9 @@ if(GetParam(0) == 'add'){
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <!-- Documentos -->
+                <div class="col-lg-6">
+
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Documentos <small>Preencha abaixo a documentação do Membro</small></h5>
@@ -171,10 +176,10 @@ if(GetParam(0) == 'add'){
                         <div class="ibox-content">
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">RG</label>
-                                <div class="col-sm-4"><input type="text" class="form-control" name="Nome" required></div>
-                                <label class="col-sm-2 control-label">CPF</label>
-                                <div class="col-sm-4"><input type="text" class="form-control" name="Nome" required></div>
+                                <label class="col-sm-4 control-label">RG</label>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
+                                <label class="col-sm-4 control-label">CPF</label>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
 
                             </div>
 
@@ -183,7 +188,8 @@ if(GetParam(0) == 'add'){
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <!-- Datas -->
+                <div class="col-lg-6">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Data <small>Preencha abaixo com as Datas Importantes do Membro</small></h5>
@@ -196,14 +202,14 @@ if(GetParam(0) == 'add'){
                         <div class="ibox-content">
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Data Nasc.</label>
-                                <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+                                <label class="col-sm-4 control-label">Nascimento</label>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
 
-                                <label class="col-sm-2 control-label">Data Batismo</label>
-                                <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+                                <label class="col-sm-4 control-label">Batismo</label>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
 
-                                <label class="col-sm-2 control-label">Data Casamento</label>
-                                <div class="col-sm-2"><input type="text" class="form-control" name="Nome" required></div>
+                                <label class="col-sm-4 control-label">Casamento</label>
+                                <div class="col-sm-8"><input type="text" class="form-control" name="Nome" required></div>
 
                             </div>
 
@@ -212,9 +218,9 @@ if(GetParam(0) == 'add'){
                     </div>
                 </div>
 
+                <div class="clearboth"></div>
+                <!-- ACTIONS -->
                 <div class="col-lg-12">
-
-
 
                             <div class="form-group">
 
@@ -229,7 +235,7 @@ if(GetParam(0) == 'add'){
 
 
             </form>
-    </div>
+
     </div>
     <?
 

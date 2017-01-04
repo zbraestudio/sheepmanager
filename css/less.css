@@ -1,3 +1,6 @@
+.clearboth {
+  clear: both;
+}
 .table-header .btn-novo {
   margin-top: 20px;
 }
