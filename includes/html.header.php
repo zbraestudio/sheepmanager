@@ -313,6 +313,8 @@ $login->verify();
           <li>
             <span class="m-r-sm text-muted welcome-message">Bem vindo ao Sheep Manager.</span>
           </li>
+
+          <!--
           <li class="dropdown">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
               <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
@@ -408,18 +410,20 @@ $login->verify();
               </li>
             </ul>
           </li>
-
+          -->
 
           <li>
             <a href="<?= GetLink('login'); ?>">
               <i class="fa fa-sign-out"></i> Sair
             </a>
           </li>
+          <!--
           <li>
             <a class="right-sidebar-toggle">
               <i class="fa fa-tasks"></i>
             </a>
           </li>
+          -->
         </ul>
 
       </nav>

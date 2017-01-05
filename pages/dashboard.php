@@ -6,45 +6,100 @@ template_getHeader();
 
 <div class="wrapper wrapper-content">
             <div class="row">
+
+                <?
+                /* MEMBROS - Até o momento */
+
+                $sql = "SELECT COUNT(ID) TOTAL FROM Membros WHERE Situacao = 'MEM' AND Igreja = " . $login->church_id;
+                $res = $db->LoadObjects($sql);
+                $reg = $res[0];
+                $membrosTotal = intval($reg->TOTAL);
+
+                ?>
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-success pull-right">trimestre</span>
+                            <span class="label label-success pull-right">no momento</span>
                             <h5>Membros</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">6</h1>
-                            <div class="stat-percent font-bold text-success">98% <i class="fa fa-level-down"></i></div>
+                            <h1 class="no-margins"><?= $membrosTotal; ?></h1>
+                            <!--<div class="stat-percent font-bold text-success">98% <i class="fa fa-level-down"></i></div>-->
                             <small>até o momento</small>
                         </div>
                     </div>
                 </div>
+
+                <?
+                /* VISITANTES - Últimos 3 meses */
+                $sql   = "SELECT YEAR(Data) ANO, MONTH(Data) ANO, (SUM(VisitantesAdultos) + SUM(VisitantesCriancas)) TOTAL";
+                $sql .= " FROM Cultos WHERE Data >= '" . date('Y-m-d', strtotime('-3 month')) . "'";
+
+                $res = $db->LoadObjects($sql);
+                $reg = $res[0];
+                $visitantes = intval($reg->TOTAL);
+
+
+                $sql  = "SELECT YEAR(Data) ANO, MONTH(Data) ANO, (SUM(VisitantesAdultos) + SUM(VisitantesCriancas)) TOTAL";
+                $sql .= " FROM Cultos WHERE Data >= '" . date('Y-m-d', strtotime('-6 month')) . "' AND Data < '" . date('Y-m-d', strtotime('-3 month')) . "'";
+
+                $res = $db->LoadObjects($sql);
+                $reg = $res[0];
+                $visitantesAnteriores = intval($reg->TOTAL);
+
+                if($visitantesAnteriores > 0)
+                    $visitantes_perc = ceil( ( ($visitantes - $visitantesAnteriores) / $visitantesAnteriores) * 100);
+                else
+                    $visitantes_perc = 100;
+
+                ?>
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-info pull-right">trimestre</span>
-                            <h5>Visitantes</h5>
+                            <span class="label label-info pull-right">últ. 3 meses</span>
+                            <h5>Visitas</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">86</h1>
-                            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                            <h1 class="no-margins"><?= $visitantes; ?></h1>
+                            <div class="stat-percent font-bold text-info"><?= $visitantes_perc; ?>% <i class="fa fa-level-<?= $visitantes_perc > 0?'up':'down'; ?>"></i></div>
                             <small>até o momento</small>
                         </div>
                     </div>
                 </div>
+
+                <?
+                /* CULTOS */
+                $sql = 'SELECT COUNT(ID) TOTAL FROM Cultos';
+                $sql .= " WHERE YEAR(Data) = '" . date('Y') . "'";
+                $res = $db->LoadObjects($sql);
+                $reg = $res[0];
+                $cultosTotal = intval($reg->TOTAL);
+                ?>
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-primary pull-right">Trimestre</span>
-                            <h5>Discipuladores</h5>
+                            <span class="label label-primary pull-right">esse ano</span>
+                            <h5>Cultos</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">8</h1>
-                            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                            <h1 class="no-margins"><?= $cultosTotal; ?></h1>
+                            <!--<div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>-->
                             <small>até o momento</small>
                         </div>
                     </div>
                 </div>
+
+                <?
+                /* Aniversariantes do Mês */
+                $sql = 'SELECT COUNT(ID) TOTAL FROM Membros';
+                $sql .= " WHERE Situacao = 'MEM' AND MONTH(DataNascimento) = MONTH(CURDATE())";
+                $res = $db->LoadObjects($sql);
+                $reg = $res[0];
+                $aniversariantesTotal = intval($reg->TOTAL);
+
+                $aniversariantes_perc = ceil($aniversariantesTotal * 100 / $membrosTotal);
+                $a
+                ?>
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -52,8 +107,8 @@ template_getHeader();
                             <h5>Aniversariantes</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 class="no-margins">2</h1>
-                            <div class="stat-percent font-bold text-danger">10% <i class="fa fa-birthday-cake"></i></div>
+                            <h1 class="no-margins"><?= $aniversariantesTotal; ?></h1>
+                            <div class="stat-percent font-bold text-danger"><?= $aniversariantes_perc; ?>% <i class="fa fa-birthday-cake"></i></div>
                             <small>janeiro</small>
                         </div>
                     </div>
