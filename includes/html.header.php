@@ -413,7 +413,7 @@ $login->verify();
           -->
 
           <li>
-            <a href="<?= GetLink('login'); ?>">
+            <a href="<?= get_config('SITE_URL'); ?>script/logout.php">
               <i class="fa fa-sign-out"></i> Sair
             </a>
           </li>
