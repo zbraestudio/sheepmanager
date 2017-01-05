@@ -1,7 +1,7 @@
 <?
 class girafaDate
 {
-    # VARIÁVEIS PRIVADAS
+    # VARIÃVEIS PRIVADAS
 
     private $_mktime = false;
     private $_language;
@@ -17,15 +17,15 @@ class girafaDate
 
         $this->_mktime = mktime($hora, $minuto, $segundo, $mes, $dia, $ano);
 
-        //Verifica se foi atribuído valor corretamente ao mktime
+        //Verifica se foi atribuÃ­do valor corretamente ao mktime
         if($this->_mktime === false)
-            throw new Exception('girafaDate::O valor especificado não pôde ser atribuído corretamente.');
+            throw new Exception('girafaDate::O valor especificado nÃ£o pÃ´de ser atribuÃ­do corretamente.');
     }
 
     private function _checkData()
     {
         if($this->_mktime === false)
-            throw new Exception('girafaDate::Você não pode executar esta ação sem antes setar uma data ao objeto.');
+            throw new Exception('girafaDate::VocÃª nÃ£o pode executar esta aÃ§Ã£o sem antes setar uma data ao objeto.');
 
         return true;
     }
@@ -62,7 +62,7 @@ class girafaDate
                 break;
 
             default:
-                throw new Exception('girafaDate::Formado de data ainda não implemtado na classe.');
+                throw new Exception('girafaDate::Formado de data ainda nÃ£o implemtado na classe.');
         }
     }
 
@@ -85,7 +85,7 @@ class girafaDate
         {
             case 1:  return 'Janeiro';
             case 2:  return 'Fevereiro';
-            case 3:  return 'Março';
+            case 3:  return 'MarÃ§o';
             case 4:  return 'Abril';
             case 5:  return 'Maio';
             case 6:  return 'Junho';
@@ -119,11 +119,11 @@ class girafaDate
         switch ($dia)
         {
             case 1:  return 'Segunda-feira';
-            case 2:  return 'Terça-feira';
+            case 2:  return 'TerÃ§a-feira';
             case 3:  return 'Quarta-feira';
             case 4:  return 'Quinta-feira';
             case 5:  return 'Sexta-feira';
-            case 6:  return 'Sábado';
+            case 6:  return 'SÃ¡bado';
             case 7:  return 'Domingo';
         }
     }

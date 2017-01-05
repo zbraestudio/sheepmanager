@@ -232,7 +232,7 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){
     foreach($cultos as $culto) {
 
         $data = new girafaDate($culto->Data, ENUM_DATE_FORMAT::YYYY_MM_DD);
-        $field_data = new girafaGRID_field($data->GetDayOfWeekLong() . ', ' . $data->GetFullDateForLong());
+        $field_data = new girafaGRID_field($data->GetDate('d/m/Y') . '  (' . $data->GetDayOfWeekLong() . ')');
 
         $field_membros = new girafaGRID_field(intval($culto->MembrosAdultos) + intval($culto->MembrosCriancas));
         $field_membros->alignRight();
