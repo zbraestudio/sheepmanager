@@ -114,8 +114,8 @@ class girafaGRID{
 
             //Ações
             $html .= '  <td class="grid_action" style="text-align: center;">';
-            $html .= '<a href="' . GetLink(GetPage() . '/edit/' . $id) . '"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
-            $html .= '<a href="' . GetLink(GetPage() . '/del/' . $id) . '" data-toggle="confirmation" data-popout="true" data-singleton="true" data-title="Tem certeza que deseja excluir esse registro?"><i class="fa fa fa-trash" aria-hidden="true"></i></a>';
+            $html .= '<a href="' . GetLink(GetPage() . '/edit/' . base64_encode($id)) . '"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+            $html .= '<a href="' . GetLink(GetPage() . '/del/' . base64_encode($id)) . '" data-toggle="confirmation" data-popout="true" data-singleton="true" data-title="Tem certeza que deseja excluir esse registro?"><i class="fa fa fa-trash" aria-hidden="true"></i></a>';
             $html .= '  </td>' . "\r\n";
 
             $html .= '</tr>' . "\r\n";

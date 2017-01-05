@@ -11,6 +11,7 @@ include('girafa.tablepost.php');
 include('girafa.date.php');
 
 include('obj.grid.php');
+include('obj.form.php');
 
 /* Objetos Girafa */
 $db = new girafaDB(get_config('DB_HOST'), get_config('DB_DB'), get_config('DB_USER'), get_config('DB_PASS'));

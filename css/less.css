@@ -20,17 +20,16 @@ table.table .confirmation .btn-group a.btn {
 table.table .confirmation .btn-group a.btn i {
   font-size: 10px;
 }
-form .form-group > div {
+form > div {
   margin-bottom: 10px;
 }
-form .form-group label.control-label {
+form label.control-label,
+form select.form-control,
+form input.form-control {
   margin-bottom: 10px;
 }
-form .form-group select.form-control {
-  margin-bottom: 10px;
-}
-form .form-group input.form-control:required,
-form .form-group select.form-control:required {
+form input.form-control:required,
+form select.form-control:required {
   background-color: #eafcf8;
 }
 form .btn-actions {

@@ -60,6 +60,6 @@ if(!isset($id)){
   $_SESSION['form_msg'] = 'O registro foi atualizado com sucesso     :)';
 }
 
-header('LOCATION:' . GetLink('membros/edit/' . $id));
+header('LOCATION:' . GetLink('membros/edit/' . base64_encode($id)));
 
 ?>
