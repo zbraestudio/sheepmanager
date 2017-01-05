@@ -38,7 +38,7 @@ include(get_config('SITE_PATH') . 'includes/html.head.php');
 
             <a href="#"><small>Esqueceu sua senha?</small></a>
             <p class="text-muted text-center"><small>Sua igreja ainda não utiliza o nosso sistema?</small></p>
-            <a class="btn btn-sm btn-white btn-block" href="register.html">Crie uma conta pra sua igreja agora</a>
+            <a class="btn btn-sm btn-white btn-block" href="#">Crie uma conta pra sua igreja agora</a>
         </form>
 
         <p class="m-t"> <small><?= get_config('FOOTER_TEXT')?></small> </p>

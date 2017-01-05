@@ -88,13 +88,16 @@ $login->verify();
 
 
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
-          <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
+          <a href="javascript:void(0);" title="Cultos"><i class="fa fa-microphone" aria-hidden="true"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="<?= GetLink('cultos/add'); ?>"><i class="fa fa-plus"></i> Adicionar Relatório</a></li>
             <li><a href="<?= GetLink('cultos'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
           </ul>
         </li>
 
+        <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
+          <a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-file-text" aria-hidden="true"></i> <span class="nav-label">Relatórios</span><span class="label label-info pull-right">NOVO</span></a>
+          </li>
 
         <!--
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
@@ -318,7 +321,7 @@ $login->verify();
           <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
           <form role="search" class="navbar-form-custom" action="search_results.html">
             <div class="form-group">
-              <input type="text" placeholder="Faça uma busca..." class="form-control" name="top-search" id="top-search">
+              <!--<input type="text" placeholder="Faça uma busca..." class="form-control" name="top-search" id="top-search">-->
             </div>
           </form>
         </div>
