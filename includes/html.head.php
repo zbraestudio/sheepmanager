@@ -20,6 +20,10 @@
 
     <link href="<?= get_config('SITE_URL'); ?>css/less.css" rel="stylesheet">
 
+    <link href="<?= get_config('SITE_URL'); ?>css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="<?= get_config('SITE_URL'); ?>css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+
+
     <!-- Arquivos JAVASCRIPTS -->
 
     <!-- Mainly scripts -->
@@ -69,6 +73,10 @@
     <!-- @tihhgoncalves - GRID -->
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/jeditable/jquery.jeditable.js"></script>
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/dataTables/datatables.min.js"></script>
+
+    <!-- @tihhgoncalves -> FORM -->
+    <script src="<?= get_config('SITE_URL'); ?>js/plugins/summernote/summernote.min.js"></script>
+
 
 
     <script src="<?= get_config('SITE_URL'); ?>js/form.js"></script>

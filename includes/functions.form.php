@@ -11,7 +11,7 @@ function form_field_string($name, $value, $lendth, $default = null, $required = 
   if(!empty($mask))
     $html .= ' mask="' . $mask . '"';
 
-  if(!isset($value))
+  if(GetParam(0) == 'add')
     $value = $default;
 
   $html .= ' value="' . $value . '"';
@@ -23,6 +23,23 @@ function form_field_string($name, $value, $lendth, $default = null, $required = 
 
   return $html;
 
+}
+
+function form_field_html($name, $value, $default = null, $required = true, $class = null){
+
+  $html  = '<textarea';
+  $html .= ' name="' . $name . '"';
+  $html .= ' class="summernote ' . $class . '"';
+  $html .= '>';
+
+  if(GetParam(0) == 'add')
+    $value = $default;
+
+  $html .= $value;
+
+  $html .= '</textarea>';
+
+  return $html;
 }
 
 
@@ -37,7 +54,7 @@ function form_field_integer($name, $value, $default = null, $min = 0, $max = 999
 
   $html .= ' class="form-control ' . $class . '"';
 
-  if(!isset($value))
+  if(GetParam(0) == 'add')
     $value = $default;
 
   $html .= ' value="' . $value . '"';

@@ -120,7 +120,7 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){
 
 
                 <!-- Adultos  -->
-                <div class="col-lg-4 col-lg-offset-4">
+                <div class="col-lg-6">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Adultos</h5>
@@ -152,7 +152,7 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){
 
 
                 <!-- Crianças  -->
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Crianças</h5>
@@ -174,6 +174,32 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){
                                 <div class="col-sm-4">
                                     <?= form_field_integer('visitantesCriancas', @$reg->VisitantesCriancas); ?>
                                 </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Descricao -->
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Descrição</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+
+                            <div class="form-group">
+
+                                <div class="col-sm-12">
+
+                                    <?= form_field_html('descricao', @$reg->Descricao, 800, null, false); ?>
 
                             </div>
 

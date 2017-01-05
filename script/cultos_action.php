@@ -1,5 +1,4 @@
 <?
-
 include('../includes/autoload.php');
 
 $login->verify();
@@ -9,6 +8,7 @@ $membrosAdultos     = intval($_POST['membrosAdultos']);
 $visitantesAdultos  = intval($_POST['visitantesAdultos']);
 $membrosCriancas    = intval($_POST['membrosCriancas']);
 $visitantesCriancas = intval($_POST['visitantesCriancas']);
+$descricao          = addslashes($_POST['descricao']);
 
 
 $post = new girafaTablePost();
@@ -26,8 +26,10 @@ $post->AddFieldInteger('MembrosAdultos',      $membrosAdultos);
 $post->AddFieldInteger('MembrosCriancas',     $membrosCriancas);
 $post->AddFieldInteger('VisitantesAdultos',   $visitantesAdultos);
 $post->AddFieldInteger('VisitantesCriancas',  $visitantesCriancas);
+$post->AddFieldString('Descricao',            $descricao);
 
 $sql = $post->GetSql();
+//die($sql);
 $db->Execute($sql);
 
 if(!isset($id)){
