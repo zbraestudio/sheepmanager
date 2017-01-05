@@ -16,7 +16,7 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){ // INSERIR E EDITAR
     $db->Execute($sql);
 
     $_SESSION['grid_msg'] = 'O registro foi excluído com sucesso     :)';
-    header('LOCATION:' . GetPage());
+    header('LOCATION:' . GetLink(GetPage()));
 
 } else { /* LISTAR */
 
