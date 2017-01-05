@@ -77,8 +77,8 @@ $login->verify();
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar Relatório</a></li>
-            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+            <li><a href="<?= GetLink('cultos/add'); ?>"><i class="fa fa-plus"></i> Adicionar Relatório</a></li>
+            <li><a href="<?= GetLink('cultos'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
           </ul>
         </li>
 

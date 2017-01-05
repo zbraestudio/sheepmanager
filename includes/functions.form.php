@@ -25,6 +25,32 @@ function form_field_string($name, $value, $lendth, $default = null, $required = 
 
 }
 
+
+function form_field_integer($name, $value, $default = null, $min = 0, $max = 9999, $required = true, $class = null){
+
+  $html = '<input type="number" ';
+
+  $html .= ' name="' . $name . '"';
+
+  $html .= ' min="' . $min . '"';
+  $html .= ' max="' . $max . '"';
+
+  $html .= ' class="form-control ' . $class . '"';
+
+  if(!isset($value))
+    $value = $default;
+
+  $html .= ' value="' . $value . '"';
+
+  if($required)
+    $html .= ' required';
+
+  $html .= ' >';
+
+  return $html;
+
+}
+
 function form_field_date($name, $value, $default = null, $required = true, $class = null){
   $html = '<input type="text" ';
 
