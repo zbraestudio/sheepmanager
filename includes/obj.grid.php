@@ -29,7 +29,7 @@ class girafaGRID{
         $html .= '    </ol>' . "\r\n";
         $html .= '  </div>' . "\r\n";
         $html .= '  <div class="col-lg-2">' . "\r\n";
-        $html .= '<a href="' . GetLink(GetPage() . '/add') . '" class="btn btn-success btn-novo"><i class="fa fa-plus" aria-hidden="true"></i> Novo</a>' . "\r\n";
+        $html .= '<a href="' . GetLink(GetPage() . '/add') . '" class="btn btn-success btn-novo pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Novo</a>' . "\r\n";
         $html .= '  </div>' . "\r\n";
         $html .= '</div>' . "\r\n";
 
