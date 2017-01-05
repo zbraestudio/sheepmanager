@@ -51,20 +51,33 @@ $login->verify();
 
 
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
-          <a href="javascript:void(0);" title="Agenda"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span> <span class="fa arrow"></span></a>
+          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Agenda</span><span class="label label-info pull-right">NOVO</span></a>
           <ul class="nav nav-second-level">
-            <li><a href="javascript:void(0);"><i class="fa fa-plus"></i> Adicionar</a></li>
-            <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-plus"></i> Adicionar</a></li>
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
           </ul>
         </li>
-
+<!--
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Financeiro"><i class="fa fa-th-large"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li><a href="javascript:void(0);"><i class="fa fa-level-up"></i> Entradas</a></li>
             <li><a href="javascript:void(0);"><i class="fa fa-level-down"></i> Saídas</a></li>
           </ul>
+        </li>-->
+
+        <li>
+          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Financeiro</span><span class="label label-info pull-right">NOVO</span></a>
+          <ul class="nav nav-second-level collapse">
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-exchange" aria-hidden="true"></i> Fluxo de Caixa</a></li>
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-up"></i> Entradas</a></li>
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-down"></i> Saídas</a></li>
+
+          </ul>
         </li>
+        <li>
+
+
         <li <?= GetPage() == 'membros'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Membros"><i class="fa fa-users"></i> <span class="nav-label">Membros</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
@@ -83,7 +96,7 @@ $login->verify();
         </li>
 
 
-
+        <!--
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Biblioteca"><i class="fa fa-book"></i> <span class="nav-label">Biblioteca</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
@@ -99,7 +112,7 @@ $login->verify();
             <li><a href="javascript:void(0);"><i class="fa fa-bars"></i> Ver todos</a></li>
           </ul>
         </li>
-
+        -->
         <!--
         <li>
           <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
