@@ -156,7 +156,7 @@ margin-left : 6px;
 #src_sec {
 background-image : url("../img/slide_img.jpg");
 background-position : center center;
-background-size : cover;
+background-size : 100%;
 min-height : 500px;
 }
 #abt_sec {
@@ -993,4 +993,13 @@ width : 355px !important ;
 }
 .single_cnt_m {
 width : 731px !important ;
+}
+
+
+@media (max-width: 767px) {
+	#slider_sec{
+		background-size: auto 84%;
+		height: 345px;
+		background-position: center 87px;
+	}
 }
