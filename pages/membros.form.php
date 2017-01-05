@@ -3,7 +3,7 @@
 template_getHeader();
 
 
-$form = new girafaFORM('Membros', 'membros_action.php');
+$form = new girafaFORM('Membros', 'membros_action.php', 'Membros', 'Nome');
 
 /* DADOS PESSOAIS */
 $box = new girafaFORM_box('Dados Pessoais', 'Informe abaixo as informações que correspondem ao membro.');

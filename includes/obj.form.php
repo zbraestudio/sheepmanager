@@ -6,20 +6,24 @@ class girafaFORM{
   private $html;
   private $script_action;
   private $boxes = array();
+  private $table;
+  private $fieldLegend;
 
   public $reg;
 
-  function girafaFORM($title, $script_action){
+  function girafaFORM($title, $script_action, $table, $fieldLegend){
     global $login, $db;
 
     $this->script_action = $script_action;
+    $this->table = $table;
+    $this->fieldLegend = $fieldLegend;
 
     if (GetParam(0) == 'edit') {
-      $sql = 'SELECT * FROM Membros WHERE ID = ' . intval(base64_decode(GetParam(1))) . ' AND Igreja = ' . $login->church_id;
+      $sql = 'SELECT * FROM `' . $this->table . '` WHERE ID = ' . intval(base64_decode(GetParam(1))) . ' AND Igreja = ' . $login->church_id;
       $res = $db->LoadObjects($sql);
 
       if (count($res) <= 0) {
-        die('<h4>o registro não foi encontrado ou você não tem permissão pra visualizá-lo.</h4>');
+        die('<h4>o registro não foi encontrado ou você não tem permissão pra visualizá-lo.</h4>' . $sql);
       }
 
       $this->reg = $res[0];
@@ -38,7 +42,7 @@ class girafaFORM{
       $html .= "      </li>";
     } else {
       $html .= "      <li>Editando</li>";
-      $html .= "      <li class=\"active\"><strong>" . $this->reg->Nome . "</strong></li>";
+      $html .= "      <li class=\"active\"><strong>" . $this->reg->$fieldLegend . "</strong></li>";
     }
     $html .= "      </ol>";
     $html .= "  </div>";

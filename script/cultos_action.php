@@ -39,6 +39,6 @@ if(!isset($id)){
     $_SESSION['form_msg'] = 'O registro foi atualizado com sucesso     :)';
 }
 
-header('LOCATION:' . GetLink('cultos/edit/' . $id));
+header('LOCATION:' . GetLink('cultos/edit/' . base64_encode($id)));
 
 ?>
