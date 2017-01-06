@@ -30,7 +30,9 @@ $(document).ready(function(){
     keyboardNavigation: false,
     forceParse: false,
     calendarWeeks: true,
-    autoclose: true
+    autoclose: true,
+    currentText: 'Hoje',
+    language: "pt-BR"
   });
 
 
