@@ -118,6 +118,30 @@ $box->AddContent($html);
 
 $form->AddBox($box);
 
+/* TELEFONES */
+$box = new girafaFORM_box('Telefones');
+
+//Telefone 1
+$html  = '<label class="col-sm-2 control-label">Telefone 1</label>';
+$html .= '<div class="col-sm-4">' . form_field_string('telefone1', @$form->reg->Telefone1, 30, null, false) .'</div>';
+$box->AddContent($html);
+
+//Telefone 2
+$html  = '<label class="col-sm-2 control-label">Telefone 2</label>';
+$html .= '<div class="col-sm-4">' . form_field_string('telefone2', @$form->reg->Telefone2, 30, null, false) .'</div>';
+$box->AddContent($html);
+
+//Telefone 1
+$html  = '<label class="col-sm-2 control-label">Telefone 3</label>';
+$html .= '<div class="col-sm-4">' . form_field_string('telefone3', @$form->reg->Telefone3, 30, null, false) .'</div>';
+$box->AddContent($html);
+
+//Telefone 1
+$html  = '<label class="col-sm-2 control-label">Telefone 4</label>';
+$html .= '<div class="col-sm-4">' . form_field_string('telefone4', @$form->reg->Telefone4, 30, null, false) .'</div>';
+$box->AddContent($html);
+
+$form->AddBox($box);
 
 
 /* DOCUMENTOS */

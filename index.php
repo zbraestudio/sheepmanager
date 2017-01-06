@@ -12,10 +12,6 @@ if(empty($_GET['url'])){
 
 }
 
-
-
-
-
 //divide parâmetros da URL
 $params = explode('/', $_GET['url']);
 include(get_config('SITE_PATH') . 'pages/' . GetPage(true));

@@ -71,6 +71,7 @@ $login->verify();
           <ul class="nav nav-second-level collapse">
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-up"></i> Entradas</a></li>
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-down"></i> Saídas</a></li>
+            <li><a href="<?= GetLink('financeiro-tiposdeconta'); ?>"><i class="fa fa-tag" aria-hidden="true"></i>Tipos de Conta</a></li>
             <li><a href="<?= GetLink('financeiro-contas'); ?>"><i class="fa fa-university" aria-hidden="true"></i> Contas</a></li>
             <li><a href="<?= GetLink('financeiro-contasinternas'); ?>"><i class="fa fa-briefcase" aria-hidden="true"></i> Contas Internas</a></li>
 
