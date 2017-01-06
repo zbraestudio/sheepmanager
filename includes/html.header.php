@@ -51,11 +51,7 @@ $login->verify();
 
 
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
-          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Agenda</span><span class="label label-info pull-right">BREVE</span></a>
-          <ul class="nav nav-second-level">
-            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-plus"></i> Adicionar</a></li>
-            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
-          </ul>
+          <a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Agenda</span><span class="label label-info pull-right">BREVE</span></a>
         </li>
 <!--
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
@@ -81,20 +77,12 @@ $login->verify();
 
 
         <li <?= GetPage() == 'membros'?'class="active"':null; ?>>
-          <a href="javascript:void(0);" title="Membros"><i class="fa fa-users"></i> <span class="nav-label">Membros</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level">
-            <li><a href="<?= GetLink('membros/add'); ?>"><i class="fa fa-plus"></i> Adicionar</a></li>
-            <li><a href="<?= GetLink('membros'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
-          </ul>
+          <a href="<?= GetLink('membros'); ?>" title="Membros"><i class="fa fa-users"></i> <span class="nav-label">Membros</span></a>
         </li>
 
 
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
-          <a href="javascript:void(0);" title="Cultos"><i class="fa fa-microphone" aria-hidden="true"></i> <span class="nav-label">Cultos</span> <span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level">
-            <li><a href="<?= GetLink('cultos/add'); ?>"><i class="fa fa-plus"></i> Adicionar Relatório</a></li>
-            <li><a href="<?= GetLink('cultos'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
-          </ul>
+          <a href="<?= GetLink('cultos'); ?>" title="Cultos"><i class="fa fa-microphone" aria-hidden="true"></i> <span class="nav-label">Cultos</span></a>
         </li>
 
 
