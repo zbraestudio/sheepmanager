@@ -91,4 +91,12 @@ function dataYYYYMMDDtoDDMMYYYY($data){
 
 }
 
+function decimalToDB($var){
+  return number_format($var, 2, '.', '');
+}
+
+function decimalFromDB($var){
+  return number_format($var, 2, '.', '');
+}
+
 ?>

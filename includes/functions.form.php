@@ -70,6 +70,8 @@ function form_field_integer($name, $value, $default = null, $min = 0, $max = 999
 
 function form_field_number($name, $value, $default = null, $min = 0.00, $max = 9999, $required = true, $class = null){
 
+  $value = decimalFromDB($value);
+
   $html = '<input type="text" ';
 
   $html .= ' name="' . $name . '"';

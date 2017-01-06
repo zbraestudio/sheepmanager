@@ -38,13 +38,14 @@ $(document).ready(function(){
 
   $(".number").TouchSpin({
     min: 0,
-    max: 999999,
+    max: 9999999999999999999999999999999,
     step: 0.1,
     decimals: 2,
     boostat: 5,
     maxboostedstep: 10,
     buttondown_class: 'btn btn-white',
-    buttonup_class: 'btn btn-white'
+    buttonup_class: 'btn btn-white',
+    initval: " "
   });
 
 

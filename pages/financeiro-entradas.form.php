@@ -15,7 +15,7 @@ $box->AddContent($html);
 
 //Valor
 $html  = '<label class="col-sm-1 col-sm-offset-3 control-label">Valor</label>';
-$html .= '<div class="col-sm-3">' . form_field_number('valor', @$form->form->reg, '0.00') .'</div>';
+$html .= '<div class="col-sm-3">' . form_field_number('valor', @$form->reg->Valor, '0.00') .'</div>';
 $box->AddContent($html);
 
 $box->AddContentBreakLine();

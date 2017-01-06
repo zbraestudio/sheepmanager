@@ -16,7 +16,7 @@ foreach($contas as $conta) {
   $field_data = new girafaGRID_field($conta->Data);
   $field_valor = new girafaGRID_field($conta->Valor);
 
-  $grid->addValues(array($field_nome, $field_data, $field_valor), $conta->ID);
+  $grid->addValues(array($field_descricao, $field_data, $field_valor), $conta->ID);
 }
 $grid->PrintHTML();
 
