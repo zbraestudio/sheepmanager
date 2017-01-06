@@ -39,6 +39,14 @@ form select.form-control:required {
 form .btn-actions {
   margin-right: 15px;
 }
+form .chosen-select {
+  display: block!important;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  z-index: -9999;
+  margin-left: 15px;
+}
 form .chosen-container.chosen-container-active .chosen-single {
   border-color: #1ab394;
   background: none;
