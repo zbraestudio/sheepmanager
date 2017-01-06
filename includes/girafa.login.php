@@ -85,7 +85,7 @@ class girafaLOGIN{
     $this->destroySession();
   }
 
-  public function verify(){
+  public function verify($redirect = true){
 
     global $login;
 
@@ -93,8 +93,11 @@ class girafaLOGIN{
 
       $login->logout();
       $_SESSION['login_msg'] = 'Você não está logado para acessar esse link';
-      header('LOCATION: ' . GetLink('login'));
 
+      if($redirect)
+        header('LOCATION: ' . GetLink('login'));
+
+      return false;
     }
 
     return true;
