@@ -17,6 +17,7 @@ class girafaFORM{
     $this->script_action = $script_action;
     $this->table = $table;
     $this->fieldLegend = $fieldLegend;
+    $this->title = $title;
 
     if (GetParam(0) == 'edit') {
       $sql = 'SELECT * FROM `' . $this->table . '` WHERE ID = ' . intval(base64_decode(GetParam(1))) . ' AND Igreja = ' . $login->church_id;
@@ -32,9 +33,9 @@ class girafaFORM{
     //Título
     $html = "<div class=\"row wrapper border-bottom white-bg page-heading\">";
     $html .= "  <div class=\"col-lg-12\">";
-    $html .= "    <h2>Membros</h2>";
+    $html .= "    <h2>" . $this->title . "</h2>";
     $html .= "    <ol class=\"breadcrumb\">";
-    $html .= "      <li><a href=\"<?= GetLink(\'membros\'); ?>\">Membros</a></li>";
+    $html .= "      <li><a href=\"" . GetLink(GetPage()) . "\">" . $this->title . "</a></li>";
 
     if (GetParam(0) == 'add') {
       $html .= "      <li class=\"active\">";
