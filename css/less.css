@@ -22,6 +22,7 @@ table.table .confirmation .btn-group a.btn i {
 }
 form {
   /* Campo SELECT chosen */
+  /* Data */
 }
 form > div {
   margin-bottom: 10px;
@@ -29,8 +30,9 @@ form > div {
 form label.control-label,
 form select.form-control,
 form input.form-control,
-form .chosen-container {
-  margin-bottom: 10px!important;
+form .chosen-container,
+form .input-group.date {
+  margin-bottom: 10px;
 }
 form input.form-control:required,
 form select.form-control:required {
@@ -72,6 +74,14 @@ form .chosen-container .chosen-drop {
 form .chosen-container .chosen-drop .chosen-results li.highlighted {
   background: none;
   background-color: #1ab394;
+}
+form .input-group.date .input-group-addon {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 20px;
+}
+form .input-group.date .input-group-addon .form-control {
+  margin-bottom: 0 !important;
 }
 .msg-form {
   padding: 5px 10px;

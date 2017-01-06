@@ -69,13 +69,15 @@ function form_field_integer($name, $value, $default = null, $min = 0, $max = 999
 }
 
 function form_field_date($name, $value, $default = null, $required = true, $class = null){
-  $html = '<input type="text" ';
+
+  $html  = '<div class="input-group date">';
+  $html .= '  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>';
+  $html .= '    <input type="text" ';
 
   $html .= ' name="' . $name . '"';
 
-  $html .= ' class="form-control mask ' . $class . '"';
+  $html .= ' class="form-control ' . $class . '"';
 
-  $html .= ' mask="00/00/0000"';
 
   if(GetParam(0) == 'add')
     $value = $default;
@@ -86,6 +88,7 @@ function form_field_date($name, $value, $default = null, $required = true, $clas
     $html .= ' required';
 
   $html .= ' >';
+  $html .= '</div>';
 
   return $html;
 }

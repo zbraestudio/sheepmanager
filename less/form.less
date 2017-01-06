@@ -8,8 +8,9 @@ form{
     label.control-label,
     select.form-control,
     input.form-control,
-    .chosen-container{
-      margin-bottom: 10px!important;
+    .chosen-container,
+    .input-group.date{
+      margin-bottom: 10px;
     }
 
     input.form-control,
@@ -76,6 +77,22 @@ form{
         }
       }
     }
+  }
+
+  /* Data */
+  .input-group.date{
+
+    .input-group-addon{
+      padding-top: 0;
+      padding-bottom: 0;
+      height: 20px;
+
+      .form-control {
+        margin-bottom: 0 !important;
+      }
+
+    }
+
   }
 
 }
