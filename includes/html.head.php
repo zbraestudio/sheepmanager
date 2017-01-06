@@ -83,6 +83,8 @@
     <link href="<?= get_config('SITE_URL'); ?>css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/datapicker/bootstrap-datepicker.js"></script>
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/datapicker/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="<?= get_config('SITE_URL'); ?>js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+
 
 
     <script src="<?= get_config('SITE_URL'); ?>js/form.js"></script>

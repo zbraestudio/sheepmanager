@@ -68,7 +68,35 @@ function form_field_integer($name, $value, $default = null, $min = 0, $max = 999
 
 }
 
+function form_field_number($name, $value, $default = null, $min = 0.00, $max = 9999, $required = true, $class = null){
+
+  $html = '<input type="text" ';
+
+  $html .= ' name="' . $name . '"';
+
+  $html .= ' min="' . $min . '"';
+  $html .= ' max="' . $max . '"';
+
+  $html .= ' class="number ' . $class . '"';
+
+  if(GetParam(0) == 'add')
+    $value = $default;
+
+  $html .= ' value="' . $value . '"';
+
+  if($required)
+    $html .= ' required';
+
+  $html .= ' >';
+
+  return $html;
+
+}
+
 function form_field_date($name, $value, $default = null, $required = true, $class = null){
+
+  if($default = 'TODAY' || $default = 'NOW')
+    $default = date('Y-m-d');
 
   $html  = '<div class="input-group date">';
   $html .= '  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>';
@@ -95,7 +123,8 @@ function form_field_date($name, $value, $default = null, $required = true, $clas
 
 function form_field_list($name, $options = array(), $value, $default = null, $required = true, $class = null){
 
-  $html = '<select ';
+  $html = '<div  class="' . ($required?'field_list_required':null) . '">';
+  $html .= '  <select ';
   $html .= '  class="chosen-select ' . $class . '"  tabindex="1"';
   $html .= ' name="' . $name . '"';
 
@@ -114,7 +143,8 @@ function form_field_list($name, $options = array(), $value, $default = null, $re
   }
 
 
-  $html .= '</select>';
+  $html .= ' </select>';
+  $html .= '</div>';
 
   return $html;
 
