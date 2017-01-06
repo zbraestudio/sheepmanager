@@ -99,15 +99,54 @@ $login->verify();
 
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text" aria-hidden="true"></i <span class="nav-label">Relatórios</span>  <span class="label label-info pull-right">BREVE</span></a>
-          <ul class="nav nav-second-level">
-            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-exchange" aria-hidden="true"></i> Fluxo de Caixa </a></li>
+
+          <ul class="nav nav-second-level collapse">
+            <li>
+              <a href="#"><i class="fa fa-money" aria-hidden="true"></i> Financeiro <span class="fa arrow"></span></a>
+              <ul class="nav nav-third-level">
+                <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-exchange" aria-hidden="true"></i> Fluxo de Caixa </a></li>
+              </ul>
+            </li>
           </ul>
+
         </li>
 
 
 
 
         <!--
+
+
+
+        <li>
+          <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level collapse">
+            <li>
+              <a href="#">Third Level <span class="fa arrow"></span></a>
+              <ul class="nav nav-third-level">
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level Item</a>
+                </li>
+
+              </ul>
+            </li>
+            <li><a href="#">Second Level Item</a></li>
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+            <li>
+              <a href="#">Second Level Item</a>
+            </li>
+          </ul>
+        </li>
+
+
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
           <a href="javascript:void(0);" title="Biblioteca"><i class="fa fa-book"></i> <span class="nav-label">Biblioteca</span> <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
