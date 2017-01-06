@@ -51,7 +51,7 @@ $login->verify();
 
 
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
-          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Agenda</span><span class="label label-info pull-right">NOVO</span></a>
+          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Agenda</span><span class="label label-info pull-right">BREVE</span></a>
           <ul class="nav nav-second-level">
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-plus"></i> Adicionar</a></li>
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-bars"></i> Ver todos</a></li>
@@ -66,12 +66,13 @@ $login->verify();
           </ul>
         </li>-->
 
-        <li>
-          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Financeiro</span><span class="label label-info pull-right">NOVO</span></a>
+        <li <?= (GetPage() == 'financeiro-contas' || GetPage() == 'xxx')?'class="active"':null; ?>>
+          <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Financeiro</span>  <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse">
-            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-exchange" aria-hidden="true"></i> Fluxo de Caixa</a></li>
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-up"></i> Entradas</a></li>
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-down"></i> Saídas</a></li>
+            <li><a href="<?= GetLink('financeiro-contas'); ?>"><i class="fa fa-university" aria-hidden="true"></i> Contas</a></li>
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-briefcase" aria-hidden="true"></i> Contas Internas</a></li>
 
           </ul>
         </li>
@@ -95,9 +96,16 @@ $login->verify();
           </ul>
         </li>
 
+
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>
-          <a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-file-text" aria-hidden="true"></i> <span class="nav-label">Relatórios</span><span class="label label-info pull-right">NOVO</span></a>
-          </li>
+          <a href="javascript:void(0);" title="Cultos"><i class="fa fa-file-text" aria-hidden="true"></i <span class="nav-label">Relatórios</span>  <span class="label label-info pull-right">BREVE</span></a>
+          <ul class="nav nav-second-level">
+            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-exchange" aria-hidden="true"></i> Fluxo de Caixa </a></li>
+          </ul>
+        </li>
+
+
+
 
         <!--
         <li <?= GetPage() == 'xxx'?'class="active"':null; ?>>

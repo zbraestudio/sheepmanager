@@ -3,7 +3,7 @@ function form_field_string($name, $value, $lendth, $default = null, $required = 
 
   $html = '<input type="text" ';
 
-  $html .= ' name="' . $name . '"';
+  $html .= ' name="' . trim($name) . '"';
   $html .= ' maxlength="' . $lendth . '"';
 
   $html .= ' class="form-control ' . $class . (!empty($mask)?' mask':null) .'"';

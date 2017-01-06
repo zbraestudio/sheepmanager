@@ -45,7 +45,7 @@ class girafaTablePost{
     if($value == null)
       $field = array($fieldName, "NULL");
     else
-      $field = array($fieldName, "'" . $value . "'");
+      $field = array(trim($fieldName), "'" . $value . "'");
 
     $this->fields[] = $field;
   }

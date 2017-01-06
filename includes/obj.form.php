@@ -130,6 +130,16 @@ class girafaFORM_box{
     $this->content_html .= $html;
   }
 
+  public function AddContentLine(){
+    $html = '<br><div class="hr-line-dashed"></div><br>';
+    $this->AddContent($html);
+  }
+
+  public function AddContentBreakLine(){
+    $html = '<div class="clearboth"></div>';
+    $this->AddContent($html);
+  }
+
   public function GetHTML(){
 
     $html = "<div class=\"col-lg-" . $this->cols . "\">";
