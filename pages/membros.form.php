@@ -25,6 +25,8 @@ $html .= form_field_list('situacao', $options, @$form->reg->Situacao, 'MEM');
 $html .= '</div>';
 $box->AddContent($html);
 
+$box->AddContentBreakLine();
+
 //Apelido
 $html  = '<label class="col-sm-2 control-label">Apelido</label>';
 $html .= '<div class="col-sm-6">' . form_field_string('apelido', @$form->reg->Apelido, 75) .'</div>';
@@ -43,6 +45,8 @@ $html .= form_field_list('situacaoCivil', $options, @$form->reg->SituacaoCivil, 
 $html .= '</div>';
 $box->AddContent($html);
 
+$box->AddContentBreakLine();
+
 //E-mail
 $html  = '<label class="col-sm-2 control-label">E-mail</label>';
 $html .= '<div class="col-sm-5">' . form_field_string('email', @$form->reg->Email, 150) .'</div>';
@@ -60,6 +64,8 @@ $html  = '<label class="col-sm-2 control-label">Logradouro</label>';
 $html .= '<div class="col-sm-10">' . form_field_string('enderecoLogradouro', @$form->reg->EnderecoLogradouro, 250, null, false) .'</div>';
 $box->AddContent($html);
 
+$box->AddContentBreakLine();
+
 //Complemento
 $html  = '<label class="col-sm-2 control-label">Complemento</label>';
 $html .= '<div class="col-sm-6">' . form_field_string('enderecoComplemento', @$form->reg->EnderecoComplemento, 250, null, false) .'</div>';
@@ -69,6 +75,8 @@ $box->AddContent($html);
 $html  = '<label class="col-sm-1 control-label">Bairro</label>';
 $html .= '<div class="col-sm-3">' . form_field_string('enderecoBairro', @$form->reg->EnderecoBairro, 75, null, false) .'</div>';
 $box->AddContent($html);
+
+$box->AddContentBreakLine();
 
 //Cidade
 $html  = '<label class="col-sm-2 control-label">Cidade</label>';
@@ -111,6 +119,8 @@ $html .= form_field_list('enderecoUF', $options, @$form->reg->EnderecoUF, null, 
 $html .= '</div>';
 $box->AddContent($html);
 
+$box->AddContentBreakLine();
+
 //CEP
 $html  = '<label class="col-sm-2 control-label">CEP</label>';
 $html .= '<div class="col-sm-2">' . form_field_string('enderecoCEP', @$form->reg->EnderecoCEP, 9, null, false, '00000-000') .'</div>';
@@ -130,6 +140,8 @@ $box->AddContent($html);
 $html  = '<label class="col-sm-2 control-label">Telefone 2</label>';
 $html .= '<div class="col-sm-4">' . form_field_string('telefone2', @$form->reg->Telefone2, 30, null, false) .'</div>';
 $box->AddContent($html);
+
+$box->AddContentBreakLine();
 
 //Telefone 1
 $html  = '<label class="col-sm-2 control-label">Telefone 3</label>';
@@ -151,6 +163,8 @@ $box = new girafaFORM_box('Documentos', null, 6);
 $html  = '<label class="col-sm-4 control-label">RG</label>';
 $html .= '<div class="col-sm-8">' . form_field_string('documentoRG', @$form->reg->DocumentoRG, 30, null, false) .'</div>';
 $box->AddContent($html);
+
+$box->AddContentBreakLine();
 
 //CPF
 $html  = '<label class="col-sm-4 control-label">CPF</label>';

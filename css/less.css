@@ -20,13 +20,17 @@ table.table .confirmation .btn-group a.btn {
 table.table .confirmation .btn-group a.btn i {
   font-size: 10px;
 }
+form {
+  /* Campo SELECT chosen */
+}
 form > div {
   margin-bottom: 10px;
 }
 form label.control-label,
 form select.form-control,
-form input.form-control {
-  margin-bottom: 10px;
+form input.form-control,
+form .chosen-container {
+  margin-bottom: 10px!important;
 }
 form input.form-control:required,
 form select.form-control:required {
@@ -34,6 +38,32 @@ form select.form-control:required {
 }
 form .btn-actions {
   margin-right: 15px;
+}
+form .chosen-container.chosen-container-active .chosen-single {
+  border-color: #1ab394;
+  background: none;
+}
+form .chosen-container .chosen-single {
+  background: none;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  font-size: 14px;
+  color: #676a6c;
+  line-height: 27px;
+  cursor: pointer;
+}
+form .chosen-container .chosen-single abbr {
+  top: 9px;
+}
+form .chosen-container .chosen-single div b {
+  background-position-y: 5px;
+}
+form .chosen-container .chosen-drop {
+  border-color: #1ab394;
+}
+form .chosen-container .chosen-drop .chosen-results li.highlighted {
+  background: none;
+  background-color: #1ab394;
 }
 .msg-form {
   padding: 5px 10px;

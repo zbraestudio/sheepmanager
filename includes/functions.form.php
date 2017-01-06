@@ -93,7 +93,7 @@ function form_field_date($name, $value, $default = null, $required = true, $clas
 function form_field_list($name, $options = array(), $value, $default = null, $required = true, $class = null){
 
   $html = '<select ';
-  $html .= ' class="form-control m-b ' . $class . '"';
+  $html .= '  class="chosen-select ' . $class . '"  tabindex="1"';
   $html .= ' name="' . $name . '"';
 
   if($required)

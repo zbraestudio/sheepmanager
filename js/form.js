@@ -16,4 +16,13 @@ $(document).ready(function(){
 
   $('.summernote').summernote();
 
+  $('.chosen-select').chosen({
+    width: "100%",
+    allow_single_deselect: true,
+    no_results_text: "Nenhum",
+    placeholder_text_single: "Selecione uma opção",
+    placeholder_text_multiple: "Selecione algumas opções"
+  });
+
+
 });

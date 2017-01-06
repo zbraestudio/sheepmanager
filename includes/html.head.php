@@ -77,6 +77,8 @@
     <!-- @tihhgoncalves -> FORM -->
     <script src="<?= get_config('SITE_URL'); ?>js/plugins/summernote/summernote.min.js"></script>
 
+    <script src="<?= get_config('SITE_URL'); ?>js/plugins/chosen/chosen.jquery.js"></script>
+    <link href="<?= get_config('SITE_URL'); ?>css/plugins/chosen/chosen.css" rel="stylesheet">
 
 
     <script src="<?= get_config('SITE_URL'); ?>js/form.js"></script>

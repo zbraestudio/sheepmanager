@@ -7,8 +7,9 @@ form{
 
     label.control-label,
     select.form-control,
-    input.form-control{
-      margin-bottom: 10px;
+    input.form-control,
+    .chosen-container{
+      margin-bottom: 10px!important;
     }
 
     input.form-control,
@@ -26,6 +27,49 @@ form{
     margin-right: 15px;
   }
 
+  /* Campo SELECT chosen */
+  .chosen-container{
+
+    &.chosen-container-active{
+      .chosen-single {
+        border-color: #1ab394;
+        background: none;
+      }
+    }
+
+    .chosen-single {
+      background: none;
+      border: 1px solid #e5e6e7;
+      border-radius: 1px;
+      font-size: 14px;
+      color: #676a6c;
+      line-height: 27px;
+      cursor: pointer;
+
+      abbr{
+        top: 9px;
+      }
+
+      div b{
+        background-position-y: 5px;
+      }
+
+
+    }
+
+    .chosen-drop{
+      border-color: #1ab394;
+
+      .chosen-results{
+
+        li.highlighted{
+          background: none;
+          background-color: #1ab394;
+        }
+      }
+    }
+  }
+
 }
 
 .msg-form{
@@ -36,4 +80,5 @@ form{
     margin: 0;
 
   }
+
 }
