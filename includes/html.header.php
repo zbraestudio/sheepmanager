@@ -66,13 +66,13 @@ $login->verify();
           </ul>
         </li>-->
 
-        <li <?= (GetPage() == 'financeiro-contas' || GetPage() == 'xxx')?'class="active"':null; ?>>
+        <li <?= (GetPage() == 'financeiro-contas' || GetPage() == 'financeiro-contasinternas')?'class="active"':null; ?>>
           <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Financeiro</span>  <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse">
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-up"></i> Entradas</a></li>
             <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-level-down"></i> Saídas</a></li>
             <li><a href="<?= GetLink('financeiro-contas'); ?>"><i class="fa fa-university" aria-hidden="true"></i> Contas</a></li>
-            <li><a href="<?= GetLink('em-breve'); ?>"><i class="fa fa-briefcase" aria-hidden="true"></i> Contas Internas</a></li>
+            <li><a href="<?= GetLink('financeiro-contasinternas'); ?>"><i class="fa fa-briefcase" aria-hidden="true"></i> Contas Internas</a></li>
 
           </ul>
         </li>
