@@ -20,6 +20,19 @@ table.table .confirmation .btn-group a.btn {
 table.table .confirmation .btn-group a.btn i {
   font-size: 10px;
 }
+.grid .input-sm {
+  border: 1px solid red;
+  height: 30px;
+  padding: 0 5px;
+  font-size: 11px;
+  border-color: #e5e6e7;
+}
+.grid .filters {
+  margin-right: 15px;
+}
+.grid label .input-sm {
+  margin-left: 5px;
+}
 form {
   /* Campo SELECT chosen */
   /* Data */

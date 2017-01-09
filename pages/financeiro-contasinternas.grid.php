@@ -1,22 +1,13 @@
 <?
 template_getHeader();
 
-$grid = new girafaGRID('Financeiro - Contas Internas');
-$grid->legends = array('Nome');
+$grid = new girafaGRID('FinanceiroContasInternas', 'Financeiro - Contas Internas');
 
+$field_nome = new girafaGRID_field('Nome');
+$field_nome->orderAsc();
 
-$sql = 'SELECT * FROM FinanceiroContasInternas';
-$sql .= ' WHERE Igreja = ' . $login->church_id;
-$sql .= ' ORDER BY Nome ASC';
-$contas = $db->LoadObjects($sql);
+$grid->addFields(array($field_nome));
 
-foreach($contas as $conta) {
-
-  $field_nome = new girafaGRID_field($conta->Nome);
-  $field_nome->orderAsc();
-
-  $grid->addValues(array($field_nome), $conta->ID);
-}
 $grid->PrintHTML();
 
 template_getFooter();
