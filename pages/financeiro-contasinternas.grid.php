@@ -13,6 +13,7 @@ $contas = $db->LoadObjects($sql);
 foreach($contas as $conta) {
 
   $field_nome = new girafaGRID_field($conta->Nome);
+  $field_nome->orderAsc();
 
   $grid->addValues(array($field_nome), $conta->ID);
 }

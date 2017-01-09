@@ -11,8 +11,10 @@ $cultos = $db->LoadObjects($sql);
 
 foreach($cultos as $culto) {
 
-  $data = new girafaDate($culto->Data, ENUM_DATE_FORMAT::YYYY_MM_DD);
-  $field_data = new girafaGRID_field($data->GetDate('d/m/Y') . '  (' . $data->GetDayOfWeekLong() . ')');
+  $field_data = new girafaGRID_field($culto->Data);
+  $field_data->isDate();
+  $field_data->alignLeft();
+  $field_data->orderDesc();
 
   $field_membros = new girafaGRID_field(intval($culto->MembrosAdultos) + intval($culto->MembrosCriancas));
   $field_membros->alignRight();

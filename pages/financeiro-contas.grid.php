@@ -13,6 +13,8 @@ $contas = $db->LoadObjects($sql);
 foreach($contas as $conta) {
 
   $field_nome = new girafaGRID_field($conta->Nome);
+  $field_nome->orderAsc();
+
   $field_banco = new girafaGRID_field($conta->BancoNome);
   $field_banco->width = 250;
   $field_agencia = new girafaGRID_field($conta->BancoAgencia);

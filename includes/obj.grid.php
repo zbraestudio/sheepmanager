@@ -90,15 +90,17 @@ class girafaGRID{
             foreach($fields as $field) {
 
                 switch($field->align) {
-                    case 'L':
-                        $align = 'left';
-                        break;
                     case 'C':
                         $align = 'center';
                         break;
                     case 'R':
                         $align = 'right';
                         break;
+                    case 'L':
+                    default:
+                        $align = 'left';
+                        break;
+
                 }
 
                 if(intval($field->width) <= 0)
@@ -107,9 +109,22 @@ class girafaGRID{
                     $style_width = 'width:' . intval($field->width) . 'px;';
                 }
 
-                $html .= '  <td style="text-align:' . $align . ';' . $style_width . '">';
-                $html .= $field->value;
-                $html .= '</td>' . "\r\n";
+                if($field->type == 'date'){
+                    $data = new girafaDate($field->value);
+                    $html .= '  <td style="text-align:' . (empty($field->align)?'center':$align) . ';' . $style_width . '" title="' . $data->GetFullDateForLong() . ' (' . $data->GetDayOfWeekLong() . ')">';
+                    $html .= $data->GetDate('d/m/Y');
+                    $html .= '</td>' . "\r\n";
+
+                }else if($field->type == 'money'){
+                    $html .= '  <td style="text-align:' . (empty($field->align)?'right':$align) . ';' . $style_width . '">';
+                    $html .= 'R$ ' . $field->value;
+                    $html .= '</td>' . "\r\n";
+
+                } else {
+                    $html .= '  <td style="text-align:' . $align . ';' . $style_width . '">';
+                    $html .= $field->value;
+                    $html .= '</td>' . "\r\n";
+                }
             }
 
             //Ações
@@ -194,10 +209,59 @@ class girafaGRID{
                         },
                     },
 
+                    "order":[<?
+
+                    $orders = null;
+
+                    foreach($this->values[0]['values'] as $x=>$value) {
+
+                    //print_r($value);
+
+
+                        if(!empty($value->order)){
+
+                            if($orders != null)
+                                $orders .= ', ';
+
+                            $orders .= '[' . $x . ', "' . $value->order . '"]';
+
+                        }
+                    }
+
+                    echo($orders);
+                    ?>]
+
                 });
 
 
 
+            });
+
+
+            jQuery.fn.dataTableExt.aTypes.unshift(
+                                    function (sData) {
+                                        if (sData !== null && sData.match(/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20|21)\d\d$/)) {
+                                            return 'date-uk';
+                                        }
+                                        return null;
+                                    }
+            );
+            jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+                "date-uk-pre": function (a) {
+                    if (a == null || a == "") {
+                        return 0;
+                    }
+                    var ukDatea = a.split('/');
+                    return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+                },
+
+                "date-uk-asc": function (a, b) {
+                    return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+                },
+
+                "date-uk-desc": function (a, b) {
+                    return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+                }
             });
 
         </script>
@@ -212,8 +276,10 @@ class girafaGRID{
 class girafaGRID_field{
 
     public $value;
-    public $align = 'L';
+    public $align = null;
     public $width = 0;
+    public $order = null;
+    public $type = 'string';
 
     function girafaGRID_field($value){
         $this->value = $value;
@@ -227,6 +293,21 @@ class girafaGRID_field{
     }
     function alignRight(){
         $this->align = 'R';
+    }
+
+    function orderAsc(){
+        $this->order = 'asc';
+    }
+    function orderDesc(){
+        $this->order = 'desc';
+    }
+
+
+    function isMoney(){
+        $this->type = 'money';
+    }
+    function isDate(){
+        $this->type = 'date';
     }
 
 

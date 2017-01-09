@@ -30,7 +30,7 @@ class girafaDate
         return true;
     }
 
-    function __construct($date, $format)
+    function __construct($date, $format = ENUM_DATE_FORMAT::YYYY_MM_DD)
     {
 
         switch ($format)

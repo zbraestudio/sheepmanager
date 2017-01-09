@@ -13,6 +13,7 @@ $contas = $db->LoadObjects($sql);
 foreach($contas as $conta) {
 
   $field_nome = new girafaGRID_field($conta->Nome);
+  $field_nome->orderAsc();
   $field_tipo = new girafaGRID_field(($conta->Tipo == 'ENT'?'Entrada':'Saída'));
   $field_tipo->width = 150;
 
