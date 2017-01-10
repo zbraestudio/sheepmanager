@@ -14,7 +14,7 @@ $contaInterna       = intval($_POST['ContaInterna']);
 $tipo               = trim($_POST['Tipo']);
 
 $post = new girafaTablePost();
-$post->table = 'FinanceiroCompromissosLancamentos';
+$post->table = 'FinanceiroLancamentos';
 
 if(isset($_POST['id']) > 0){
   $post->id = intval($_POST['id']);

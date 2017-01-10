@@ -12,7 +12,7 @@ if(GetParam(2) == 'lancamento') {
 
   } elseif(GetParam(3) == 'del'){/* DELETAR LANÇAMENTO */
 
-    $sql = 'DELETE FROM FinanceiroCompromissosLancamentos WHERE Igreja = ' . $login->church_id . ' AND ID = ' . intval(base64_decode(GetParam(4)));
+    $sql = 'DELETE FROM FinanceiroLancamentos WHERE Igreja = ' . $login->church_id . ' AND ID = ' . intval(base64_decode(GetParam(4)));
     if($db->Execute($sql)){
       $_SESSION['form_msg'] = 'O lançamento foi excluído com sucesso     :)';
     } else {

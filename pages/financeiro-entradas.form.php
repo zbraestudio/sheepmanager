@@ -97,7 +97,7 @@ if(!empty($form->reg->ID)) {
   $html .= '                            </thead>';
   $html .= '                            <tbody>';
 
-  $sql  = 'SELECT * FROM FinanceiroCompromissosLancamentos';
+  $sql  = 'SELECT * FROM FinanceiroLancamentos';
   $sql .= " WHERE Igreja = " . $login->church_id . " AND Compromisso = " . $form->reg->ID;
   $sql .= ' ORDER BY Data ASC';
   $lancamentos = $db->LoadObjects($sql);

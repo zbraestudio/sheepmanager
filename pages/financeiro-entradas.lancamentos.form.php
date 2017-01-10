@@ -3,7 +3,7 @@
 template_getHeader();
 
 
-$form = new girafaFORM('Financeiro - Lançamento', 'financeiro-lancamento_action.php', 'FinanceiroCompromissosLancamentos', 'Data');
+$form = new girafaFORM('Financeiro - Lançamento', 'financeiro-lancamento_action.php', 'FinanceiroLancamentos', 'Data');
 
 $form->linkVoltar = GetLink(GetPage() . '/edit/' . GetParam(1));
 $form->linkNovo = GetLink(GetPage() . '/add/' . GetParam(1) . '/lancamento/add');
