@@ -36,7 +36,7 @@ $(document).ready(function(){
   });
 
 
-  $(".number").TouchSpin({
+  $(".field_number").TouchSpin({
     min: 0,
     max: 9999999999999999999999999999999,
     step: 0.01,
@@ -57,13 +57,13 @@ $(document).ready(function(){
 
     var val = $(this).val();
     /*
-    13 = ENTER
-    8 = BACKSPACE
-    9 = TAB
-    110 = Separador Decimal (teclado numérico)
-    190 = Ponto final
-    47-58 - Números
-    96 - 105 - Número (teclado númerico)
+     13 = ENTER
+     8 = BACKSPACE
+     9 = TAB
+     110 = Separador Decimal (teclado numérico)
+     190 = Ponto final
+     47-58 - Números
+     96 - 105 - Número (teclado númerico)
      */
 
     var tecla = e.which;
@@ -77,6 +77,47 @@ $(document).ready(function(){
         return true;
 
     }
+
+    return false;
+  });
+
+
+
+
+  $(".field_integer").TouchSpin({
+    min: 0,
+    max: 9999999999999999999999999999999,
+    step: 1,
+    forcestepdivisibility: 'none',
+    decimals: 0,
+    boostat: 5,
+    maxboostedstep: 10,
+    buttondown_class: 'btn btn-white',
+    buttonup_class: 'btn btn-white',
+    initval: " "
+
+
+  }).focusout(function(){
+    var val = $(this).val();
+    $(this).val(val.replace(',', '.'));
+
+  }).keydown(function(e) {
+
+    var val = $(this).val();
+    /*
+     13 = ENTER
+     8 = BACKSPACE
+     9 = TAB
+     110 = Separador Decimal (teclado numérico)
+     190 = Ponto final
+     47-58 - Números
+     96 - 105 - Número (teclado númerico)
+     */
+
+    var tecla = e.which;
+
+    if ( tecla == 13 || tecla == 9 || tecla == 8 || (tecla > 47 && tecla < 58) || (tecla >= 96 && tecla <= 105))
+      return true;
 
     return false;
   });

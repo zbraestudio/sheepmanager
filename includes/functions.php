@@ -32,6 +32,11 @@ function GetParam($key){
   return @$p[$key];
 }
 
+function GetParamsCount(){
+  $p = GetParamsArray();
+  return intval(count($p));
+}
+
 function nl2p($string)
 {
   $string = str_replace(array('<p>', '</p>', '<br>', '<br />'), '', $string);
@@ -92,11 +97,25 @@ function dataYYYYMMDDtoDDMMYYYY($data){
 }
 
 function decimalToDB($var){
+  $var = str_replace(',', '.', $var);
   return number_format($var, 2, '.', '');
 }
 
 function decimalFromDB($var){
   return number_format($var, 2, '.', '');
+}
+
+function LoadRecord($table, $value, $fieldName = 'ID'){
+  global $db, $login;
+
+  $sql = 'SELECT * FROM ' . $table;
+  $sql .= " WHERE Igreja = '" . $login->church_id . "' AND " . $fieldName . " = '" . $value . "'";
+  $res = $db->LoadObjects($sql);
+
+  if(count($res) <= 0)
+    return false;
+  else
+    return $res[0];
 }
 
 ?>

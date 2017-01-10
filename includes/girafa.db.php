@@ -101,12 +101,7 @@ class girafaDB
 
     $resource = mysqli_query($this->connection, $sql);
 
-    if($resource === false)
-    {
-      $this->_setErrorMsg();
-      throw new Exception('girafaDB: Não foi possível concluir a execução do comando enviado ao banco de dados:' . $sql);
-    }
-    return true;
+    return $resource;
   }
 
   public function GetLastIdInsert()

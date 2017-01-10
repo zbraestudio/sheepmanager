@@ -6,13 +6,17 @@ include('../includes/autoload.php');
 $login->verify();
 
 $data             = dataDDMMYYYYtoYYYYMMDD($_POST['data']);
-$valor            = decimalToDB($_POST['valorPrevisto']);
+$valor            = decimalToDB($_POST['valor']);
 $descricao        = trim($_POST['descricao']);
 $tipoDeConta      = intval($_POST['tipoDeConta']);
+$conta            = intval($_POST['conta']);
+$contaInterna     = intval($_POST['contaInterna']);
 $situacao         = trim($_POST['situacao']);
+$membro           = trim($_POST['membro']);
+
 
 $post = new girafaTablePost();
-$post->table = 'FinanceiroCompromissos';
+$post->table = 'FinanceiroMovimentacoes';
 
 if(isset($_POST['id']) > 0){
   $post->id = intval($_POST['id']);
@@ -20,13 +24,16 @@ if(isset($_POST['id']) > 0){
 }
 
 $post->AddFieldString('Igreja', $login->church_id);
-$post->AddFieldString('Tipo', 'ENT');
+$post->AddFieldString('Tipo', 'SAI');
 
 $post->AddFieldString('Data',                   $data);
-$post->AddFieldString('ValorPrevisto',          $valor);
+$post->AddFieldString('Valor',                  $valor);
 $post->AddFieldString('Descricao',              $descricao);
 $post->AddFieldString('TipoDeConta',            $tipoDeConta);
+$post->AddFieldString('Conta',                  $conta);
+$post->AddFieldString('ContaInterna',           $contaInterna);
 $post->AddFieldString('Situacao',               $situacao);
+$post->AddFieldString('Membro',                 $membro);
 
 $sql = $post->GetSql();
 //die($sql);
@@ -39,9 +46,6 @@ if(!isset($id)){
   $_SESSION['form_msg'] = 'O registro foi atualizado com sucesso     :)';
 }
 
-financeiroFechaCompromisso($id);
-
-
-header('LOCATION:' . GetLink('financeiro-entradas/edit/' . base64_encode($id)));
+header('LOCATION:' . GetLink('financeiro-saidas/edit/' . base64_encode($id)));
 
 ?>

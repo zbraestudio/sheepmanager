@@ -1,6 +1,6 @@
 <?
-set_config('TITLE', 'Financeiro - Tipos Conta');
-$tabela = 'FinanceiroTiposDeConta';
+set_config('TITLE', 'Financeiro - Saídas');
+$tabela = 'FinanceiroMovimentacoes';
 
 $login->verify();
 

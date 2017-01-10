@@ -11,7 +11,7 @@ function form_field_string($name, $value, $lendth, $default = null, $required = 
   if(!empty($mask))
     $html .= ' mask="' . $mask . '"';
 
-  if(GetParam(0) == 'add')
+  if(GetParam(GetParamsCount()-1) == 'add')
     $value = $default;
 
   $html .= ' value="' . $value . '"';
@@ -32,7 +32,7 @@ function form_field_html($name, $value, $default = null, $required = true, $clas
   $html .= ' class="summernote ' . $class . '"';
   $html .= '>';
 
-  if(GetParam(0) == 'add')
+  if(GetParam(GetParamsCount()-1) == 'add')
     $value = $default;
 
   $html .= $value;
@@ -45,28 +45,30 @@ function form_field_html($name, $value, $default = null, $required = true, $clas
 
 function form_field_integer($name, $value, $default = null, $min = 0, $max = 9999, $required = true, $class = null){
 
-  $html = '<input type="number" ';
+    $value = decimalFromDB($value);
 
-  $html .= ' name="' . $name . '"';
+    $html = '<input type="text" ';
 
-  $html .= ' min="' . $min . '"';
-  $html .= ' max="' . $max . '"';
+    $html .= ' name="' . $name . '"';
 
-  $html .= ' class="form-control ' . $class . '"';
+    $html .= ' min="' . $min . '"';
+    $html .= ' max="' . $max . '"';
 
-  if(GetParam(0) == 'add')
-    $value = $default;
+    $html .= ' class="field_integer ' . $class . '"';
 
-  $html .= ' value="' . $value . '"';
+    if(GetParam(GetParamsCount()-1) == 'add')
+      $value = $default;
 
-  if($required)
-    $html .= ' required';
+    $html .= ' value="' . $value . '"';
 
-  $html .= ' >';
+    if($required)
+      $html .= ' required';
 
-  return $html;
+    $html .= ' >';
 
-}
+    return $html;
+
+  }
 
 function form_field_number($name, $value, $default = null, $min = 0.00, $max = 9999, $required = true, $class = null){
 
@@ -79,9 +81,9 @@ function form_field_number($name, $value, $default = null, $min = 0.00, $max = 9
   $html .= ' min="' . $min . '"';
   $html .= ' max="' . $max . '"';
 
-  $html .= ' class="number ' . $class . '"';
+  $html .= ' class="field_number ' . $class . '"';
 
-  if(GetParam(0) == 'add')
+  if(GetParam(GetParamsCount()-1) == 'add')
     $value = $default;
 
   $html .= ' value="' . $value . '"';
@@ -109,7 +111,7 @@ function form_field_date($name, $value, $default = null, $required = true, $clas
   $html .= ' class="form-control ' . $class . '"';
 
 
-  if(GetParam(0) == 'add')
+  if(GetParam(GetParamsCount()-1) == 'add')
     $value = $default;
 
   $html .= ' value="' . dataYYYYMMDDtoDDMMYYYY($value) . '"';
@@ -133,7 +135,7 @@ function form_field_list($name, $options = array(), $value, $default = null, $re
   if($required)
     $html .= ' required';
 
-  if(GetParam(0) == 'add')
+  if(GetParam(GetParamsCount()-1) == 'add')
     $value = $default;
 
   $html .= '>';

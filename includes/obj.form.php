@@ -10,6 +10,7 @@ class girafaFORM{
   private $fieldLegend;
 
   public $reg;
+  public $linkVoltar;
 
   function girafaFORM($title, $script_action, $table, $fieldLegend){
     global $login, $db;
@@ -19,8 +20,9 @@ class girafaFORM{
     $this->fieldLegend = $fieldLegend;
     $this->title = $title;
 
-    if (GetParam(0) == 'edit') {
-      $sql = 'SELECT * FROM `' . $this->table . '` WHERE ID = ' . intval(base64_decode(GetParam(1))) . ' AND Igreja = ' . $login->church_id;
+    if (GetParam(GetParamsCount()-2) == 'edit') {
+      $sql = 'SELECT * FROM `' . $this->table . '` WHERE ID = ' . intval(base64_decode(GetParam(GetParamsCount()-1))) . ' AND Igreja = ' . $login->church_id;
+      //die($sql);
       $res = $db->LoadObjects($sql);
 
       if (count($res) <= 0) {
@@ -37,7 +39,7 @@ class girafaFORM{
     $html .= "    <ol class=\"breadcrumb\">";
     $html .= "      <li><a href=\"" . GetLink(GetPage()) . "\">" . $this->title . "</a></li>";
 
-    if (GetParam(0) == 'add') {
+    if (GetParam(GetParamsCount()-1) == 'add') {
       $html .= "      <li class=\"active\">";
       $html .= "        <strong>Adicionando Novo</strong>";
       $html .= "      </li>";
@@ -59,7 +61,7 @@ class girafaFORM{
   }
 
   function PrintHTML(){
-/*
+
     //Tem mensagem pra exibir?
     if(isset($_SESSION['form_msg'])) {
       $html  = "<div class=\"wrapper wrapper-content msg-form\">";
@@ -68,7 +70,17 @@ class girafaFORM{
       $this->html .= $html;
       unset($_SESSION['form_msg']);
     }
-*/
+
+
+    //Tem mensagem pra exibir?
+    if(isset($_SESSION['form_msg_error'])) {
+      $html  = "<div class=\"wrapper wrapper-content msg-form\">";
+      $html .= "  <div class=\"alert alert-danger\" role=\"alert\">" . $_SESSION['form_msg_error'] . "</div>";
+      $html .= "</div>";
+      $this->html .= $html;
+      unset($_SESSION['form_msg_error']);
+    }
+
 
     // Content..
     $html  = "<div class=\"wrapper wrapper-content animated fadeInRight\">";
@@ -93,12 +105,15 @@ class girafaFORM{
     $html .= "  <div class=\"form-group\">";
     $html .= "    <div class=\"pull-right btn-actions\">";
 
-    if(GetParam(0) == 'edit'){
+    if(GetParam(GetParamsCount()-2) == 'edit'){
       $html .= "      <a href=\"" . GetLink(GetPage())  . "/add\" class=\"btn btn-info btn-xs\" type=\"submit\">Adicionar novo</a>";
     }
 
-    $html .= "      <a href=\"" . GetLink(GetPage())  . "\" class=\"btn btn-white\" type=\"submit\">Voltar</a>";
-    $html .= "      <button class=\"btn btn-primary\" type=\"submit\">" . ( (GetParam(0) == 'add')?'Adicionar':'Atualizar' ) . "</button>";
+    if(empty($this->linkVoltar))
+      $this->linkVoltar = GetLink(GetPage());
+
+    $html .= "      <a href=\"" . $this->linkVoltar  . "\" class=\"btn btn-white\" type=\"submit\">Voltar</a>";
+    $html .= "      <button class=\"btn btn-primary\" type=\"submit\">" . ( (GetParam(GetParamsCount()-1) == 'add')?'Adicionar':'Atualizar' ) . "</button>";
     $html .= "    </div>";
     $html .= "  </div>";
     $html .= "</div>";

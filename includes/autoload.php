@@ -4,6 +4,7 @@ session_start();
 include('config.php');
 include('functions.php');
 include('functions.form.php');
+include('functions.financeiro.php');
 
 include('girafa.login.php');
 include('girafa.db.php');

@@ -32,17 +32,20 @@ class girafaGRID
 
     //Campo Pesquisas...
     if(isset($_POST['s'])){
-      $sql .= ' AND (';
 
-      foreach($this->fields as $x=>$field){
+      if(!empty($_POST['s'])) {
+        $sql .= ' AND (';
 
-        if($x > 0)
-          $sql .= ' OR ';
+        foreach ($this->fields as $x => $field) {
 
-        $sql .= $field->field . ' LIKE "%' . addslashes($_POST['s']) . '%"';
+          if ($x > 0)
+            $sql .= ' OR ';
+
+          $sql .= $field->field . ' LIKE "%' . addslashes($_POST['s']) . '%"';
+        }
+
+        $sql .= ')';
       }
-
-      $sql .= ')';
     }
 
     //Pelos filtros (select) DEFAULT
@@ -100,7 +103,7 @@ class girafaGRID
 
   public function PrintHTML()
   {
-      ?>
+    ?>
 
 
 
@@ -122,15 +125,24 @@ class girafaGRID
       </div>
 
       <?
-      if (isset($_SESSION['grid_msg'])) {
-?>
-          <div class="wrapper wrapper-content msg-form">
-            <div class="alert alert-success" role="alert"><?= $_SESSION['grid_msg']; ?></div>
-          </div>
-<?
-          unset($_SESSION['grid_msg']);
-      }
+    if (isset($_SESSION['grid_msg'])) {
       ?>
+      <div class="wrapper wrapper-content msg-form">
+        <div class="alert alert-success" role="alert"><?= $_SESSION['grid_msg']; ?></div>
+      </div>
+      <?
+      unset($_SESSION['grid_msg']);
+    }
+
+    if (isset($_SESSION['grid_msg_error'])) {
+      ?>
+      <div class="wrapper wrapper-content msg-form">
+        <div class="alert alert-danger" role="alert"><?= $_SESSION['grid_msg_error']; ?></div>
+      </div>
+      <?
+      unset($_SESSION['grid_msg_error']);
+    }
+    ?>
 
       <div class="wrapper wrapper-content animated fadeInRight">
       <div class="row">
@@ -142,39 +154,39 @@ class girafaGRID
                               <form action="<?= GetLink(GetPage()); ?>" method="post" id="filters">
                                   <div class="col-sm-4 col-sm-offset-5 m-b-xs">
                                   <?
-                                    if(count($this->filters) > 0) {
-                                      ?>
-                                      <select class="input-sm form-control input-s-sm inline" id="filter_list"
-                                              name="filter_list" placeholder="Faça um filtro...">
-                                        <option value="">Todos os registros</option>
+    if (count($this->filters) > 0) {
+      ?>
+      <select class="input-sm form-control input-s-sm inline" id="filter_list"
+              name="filter_list" placeholder="Faça um filtro...">
+        <option value="">Todos os registros</option>
 
-                                        <?
+        <?
 
-                                        foreach ($this->filters as $filter) {
-                                          ?>
-                                          <option value="<?= $filter['sqlWhere']; ?>" <?
+        foreach ($this->filters as $filter) {
+          ?>
+          <option value="<?= $filter['sqlWhere']; ?>" <?
 
-                                          if (isset($_POST['filter_list'])) {
+          if (isset($_POST['filter_list'])) {
 
-                                            if ($_POST['filter_list'] == $filter['sqlWhere']) {
-                                              echo(' selected');
-                                            }
+            if ($_POST['filter_list'] == $filter['sqlWhere']) {
+              echo(' selected');
+            }
 
-                                          } elseif ($filter['default']) {
-                                            echo(' selected');
-                                          }
+          } elseif ($filter['default']) {
+            echo(' selected');
+          }
 
 
-                                          ?>><?= $filter['legend']; ?></option>
-                                        <?
-                                        }
-                                        ?>
+          ?>><?= $filter['legend']; ?></option>
+        <?
+        }
+        ?>
 
-                                      </select>
+      </select>
 
-                                    <?
-                                    }
-                                      ?>
+    <?
+    }
+    ?>
                                   </div>
 
                                   <div class="col-sm-3">
@@ -189,40 +201,59 @@ class girafaGRID
                                   <thead>
                                   <tr>
                                       <?
-                                      foreach ($this->fields as $legenda) {
+    /* LEGENDAS */
+    foreach ($this->fields as $legenda) {
 
-                                        switch($legenda->align){
-                                          case 'L':
-                                          default:
-                                            $align = 'left';
-                                            break;
-                                          case 'C':
-                                            $align = 'center';
-                                            break;
-                                          case 'R':
-                                            $align = 'right';
-                                            break;
-                                        }
+      switch ($legenda->align) {
+        case 'L':
+        default:
+          $align = 'left';
+          break;
+        case 'C':
+          $align = 'center';
+          break;
+        case 'R':
+          $align = 'right';
+          break;
+      }
 
-                                        echo('<th style="text-align: ' . $align . ';' . (($legenda->width > 0)?'width:' . $legenda->width . 'px;':null) . '">');
-                                        echo($legenda->legend);
+      if($legenda->type == 'money'){
+        if(empty($legenda->align))
+          $align = 'right';
 
-                                        if(!empty($legenda->order))
-                                          echo(' <i class="fa fa-caret-' . ($legenda->order == 'ASC'?'up':'down') . '" aria-hidden="true"></i>');
+      } elseif($legenda->type == 'date'){
 
-                                        echo('</th>');
-                                      }
-                                      ?>
+        if(empty($legenda->align))
+          $align = 'center';
+
+        if(empty($legenda->width))
+          $legenda->width = 135;
+
+      }
+
+      echo('<th style="text-align: ' . $align . ';' . (($legenda->width > 0) ? 'width:' . $legenda->width . 'px;' : null) . '">');
+      echo($legenda->legend);
+
+      if (!empty($legenda->order))
+        echo(' <i class="fa fa-caret-' . ($legenda->order == 'ASC' ? 'up' : 'down') . '" aria-hidden="true"></i>');
+
+      echo('</th>');
+    }
+    ?>
                                       <th style="width: 80px;text-align: center;">Ações</th>
                                   </tr>
                                   </thead>
                                   <tbody>
                                   <?
 
-      //registros
-      $this->load();
+    //registros
+    $this->load();
 
-    foreach($this->reg as $reg){
+    if (count($this->reg) == 0) {
+      echo('<td colspan="' . count($this->fields) . '" style="text-align: center;">Nenhum registro encontrado.</td>');
+    } else {
+
+      foreach ($this->reg as $reg) {
 
         $id = $reg->ID;
 
@@ -230,7 +261,7 @@ class girafaGRID
 
         foreach ($this->fields as $field) {
 
-          switch($field->align){
+          switch ($field->align) {
             case 'L':
             default:
               $align = 'left';
@@ -243,39 +274,67 @@ class girafaGRID
               break;
           }
 
-          echo('<td style="text-align:' . $align . ';">');
 
-          if($field->type == 'custom'){
+
+          if ($field->type == 'custom') {
+
+            $value = $field->field;
 
             //macro..
-            if(function_exists('macro_grid_before')){
-              $value = macro_grid_before($field->field, $reg);
+            if (function_exists('macro_grid_before')) {
+              $return = macro_grid_before($field->field, $reg);
+
+              if(!empty($return))
+                $value = $return;
+
             }
 
-            if(empty($value)){
-              $value = $field->field;
-            }
 
-
-          } elseif($field->type == 'mail'){
+          } elseif ($field->type == 'mail') {
 
             $fieldName = $field->field;
             $value = $value = $reg->$fieldName;
             $value = '<a href="mailto:' . $value . '">' . $value . '</a>';
 
-          } elseif($field->type == 'list'){
+          } elseif ($field->type == 'list') {
 
             $fieldName = $field->field;
             $value = $reg->$fieldName;
 
-            if(isset($field->type_list_options[$value]))
+            if (isset($field->type_list_options[$value]))
               $value = $field->type_list_options[$value];
 
+          } elseif ($field->type == 'money') {
+
+            $fieldName = $field->field;
+            $value = $reg->$fieldName;
+
+            if(empty($field->align))
+              $align = 'right';
+
+            $value = 'R$ ' . $value;
+
+
+          } elseif($field->type == 'date') {
+
+            $fieldName = $field->field;
+            $value = $reg->$fieldName;
+
+            if(!empty($value)) {
+              $data = new girafaDate($value);
+              $value = $data->GetFullDateForShorten() . ' (' . $data->GetDayOfWeekShorten() . ')';
+            }
+
+            if (empty($field->align))
+              $align = 'center';
           } else {
+
+
             $fieldName = $field->field;
             $value = $reg->$fieldName;
           }
 
+          echo('<td style="text-align:' . $align . ';">');
           echo($value);
           echo('</td>');
         }
@@ -291,6 +350,8 @@ class girafaGRID
       ?>
 
                                   </tbody>
+
+
                               </table>
                           </div>
 
@@ -303,6 +364,7 @@ class girafaGRID
   </div>
       <?
 
+    }
   }
 
 }

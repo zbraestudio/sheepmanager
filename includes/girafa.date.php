@@ -134,8 +134,10 @@ class girafaDate
         $this->_checkData();
 
         $dia = $this->GetDayOfWeekLong();
+        $dia = utf8_decode($dia);
         $dia = strtolower($dia);
         $dia = substr($dia, 0, 3);
+        $dia = utf8_encode($dia);
         return $dia;
     }
 
@@ -160,7 +162,7 @@ class girafaDate
         $mes = $this->GetMonthNameShorten();
         $ano = $this->GetDate('y');
 
-        return $dia . '.' . $mes . '.' . $ano;
+        return $dia . '/' . $mes . '/' . $ano;
     }
 
 }

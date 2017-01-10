@@ -12,11 +12,13 @@ if(GetParam(0) == 'add' || GetParam(0) == 'edit'){ // INSERIR E EDITAR
 
 } elseif(GetParam(0) == 'del') { /*DELETAR */
 
-    $sql = 'DELETE FROM ' . $tabela . ' WHERE Igreja = ' . $login->church_id . ' AND ID = ' . intval(base64_decode(GetParam(1)));
-    $db->Execute($sql);
-
+  $sql = 'DELETE FROM ' . $tabela . ' WHERE Igreja = ' . $login->church_id . ' AND ID = ' . intval(base64_decode(GetParam(1)));
+  if($db->Execute($sql)){
     $_SESSION['grid_msg'] = 'O registro foi excluído com sucesso     :)';
-    header('LOCATION:' . GetLink(GetPage()));
+  } else {
+    $_SESSION['grid_msg_error'] = 'Ops! Aconteceu um problema e não foi possível excluir esse registro.';
+  }
+  header('LOCATION:' . GetLink(GetPage()));
 
 } else { /* LISTAR */
 
