@@ -1,7 +1,10 @@
 <?
 template_getHeader();
 
-$grid = new girafaGRID('FinanceiroTiposDeConta', 'Financeiro - Contas Internas');
+$grid = new girafaGRID('FinanceiroTiposDeConta', 'Financeiro - Tipos de Conta');
+
+$grid->AddFilter('de Saída', "Tipo = 'SAI'");
+$grid->AddFilter('de Entrada', "Tipo = 'ENT'");
 
 $field_nome = new girafaGRID_field('Nome');
 $field_nome->orderAsc();
