@@ -62,7 +62,7 @@ $login->verify();
           </ul>
         </li>-->
 
-        <li <?= (GetPage() == 'financeiro-contas' || GetPage() == 'financeiro-contasinternas' || GetPage() == 'financeiro-tiposdeconta' || GetPage() == 'financeiro-entradas' || GetPage() == 'financeiro-saidas')?'class="active"':null; ?>>
+        <li <?= (GetPage() == 'financeiro-contas' || GetPage() == 'financeiro-contasinternas' || GetPage() == 'financeiro-tiposdeconta' || GetPage() == 'financeiro-entradas' || GetPage() == 'financeiro-saidas'|| GetPage() == 'financeiro-transferencias')?'class="active"':null; ?>>
           <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span class="nav-label">Financeiro</span>  <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse">
             <li><a href="<?= GetLink('financeiro-entradas'); ?>"><i class="fa fa-level-up"></i> Entradas</a></li>
