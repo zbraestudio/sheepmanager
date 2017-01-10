@@ -327,6 +327,17 @@ class girafaGRID
 
             if (empty($field->align))
               $align = 'center';
+
+          } elseif($field->type == 'table'){
+
+            $fieldName = $field->field;
+            $value = $reg->$fieldName;
+
+            $r = LoadRecord($field->type_table_name, $value);
+            $fieldName = $field->type_table_fieldname;
+            $value = $r->$fieldName;
+
+
           } else {
 
 
@@ -378,6 +389,8 @@ class girafaGRID_field{
   public $type = 'string';
 
   public $type_list_options = array();
+  public $type_table_name;
+  public $type_table_fieldname;
 
   function girafaGRID_field($field, $legend = null){
       $this->field = $field;
@@ -414,6 +427,12 @@ class girafaGRID_field{
 
   function isCustom(){
     $this->type = 'custom';
+  }
+
+  function isTable($tableName, $fieldName){
+    $this->type = 'table';
+    $this->type_table_name = $tableName;
+    $this->type_table_fieldname = $fieldName;
   }
 
   function isMail(){
