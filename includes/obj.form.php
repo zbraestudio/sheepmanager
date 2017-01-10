@@ -11,6 +11,7 @@ class girafaFORM{
 
   public $reg;
   public $linkVoltar;
+  public $linkNovo;
 
   function girafaFORM($title, $script_action, $table, $fieldLegend){
     global $login, $db;
@@ -106,7 +107,11 @@ class girafaFORM{
     $html .= "    <div class=\"pull-right btn-actions\">";
 
     if(GetParam(GetParamsCount()-2) == 'edit'){
-      $html .= "      <a href=\"" . GetLink(GetPage())  . "/add\" class=\"btn btn-info btn-xs\" type=\"submit\">Adicionar novo</a>";
+
+      if(empty($this->linkNovo))
+        $this->linkNovo = GetLink(GetPage()) . '/add';
+
+      $html .= "      <a href=\"" . $this->linkNovo  . "\" class=\"btn btn-info btn-xs\" type=\"submit\">Adicionar novo</a>";
     }
 
     if(empty($this->linkVoltar))
