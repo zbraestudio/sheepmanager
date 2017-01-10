@@ -22,7 +22,7 @@ $field_valor = new girafaGRID_field('Valor', 'Valor');
 $field_valor->isMoney();
 
 
-$grid->addFields(array($field_data, $field_deConta, $field_deContaInterna, $field_paraConta, $field_paraContaInterna, $field_valor));
+$grid->addFields(array($field_data, $field_deConta, $field_paraConta, $field_deContaInterna, $field_paraContaInterna, $field_valor));
 
 $grid->PrintHTML();
 

@@ -329,14 +329,16 @@ class girafaGRID
               $align = 'center';
 
           } elseif($field->type == 'table'){
-
             $fieldName = $field->field;
             $value = $reg->$fieldName;
 
-            $r = LoadRecord($field->type_table_name, $value);
-            $fieldName = $field->type_table_fieldname;
-            $value = $r->$fieldName;
+            if(!empty($value)){
 
+              $r = LoadRecord($field->type_table_name, $value);
+              $fieldName = $field->type_table_fieldname;
+              $value = $r->$fieldName;
+
+            }
 
           } else {
 
