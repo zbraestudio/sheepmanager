@@ -11,6 +11,8 @@ $valor              = decimalToDB($_POST['Valor']);
 $conta              = intval($_POST['Conta']);
 $contaInterna       = intval($_POST['ContaInterna']);
 
+$tipo               = trim($_POST['Tipo']);
+
 $post = new girafaTablePost();
 $post->table = 'FinanceiroCompromissosLancamentos';
 
@@ -40,6 +42,6 @@ if(!isset($id)){
 
 financeiroFechaCompromisso($compromisso);
 
-header('LOCATION:' . GetLink('financeiro-entradas/edit/' . base64_encode($compromisso) . '/lancamento/edit/' . base64_encode($id)));
+header('LOCATION:' . GetLink('financeiro-' . ($tipo == 'ENT'?'entradas':'saidas') . '/edit/' . base64_encode($compromisso) . '/lancamento/edit/' . base64_encode($id)));
 
 ?>

@@ -1,7 +1,7 @@
 <?
 template_getHeader();
 
-$grid = new girafaGRID('FinanceiroMovimentacoes', 'Financeiro - Saídas');
+$grid = new girafaGRID('FinanceiroCompromissos', 'Financeiro - Saídas');
 $grid->sqlWheres = "Tipo = 'SAI'";
 
 $grid->AddFilter('Contas Pagas', "Situacao = 'PAG'");
@@ -13,16 +13,20 @@ $field_data = new girafaGRID_field('Data');
 $field_data->isDate();
 $field_data->orderDesc();
 
-$field_valor = new girafaGRID_field('Valor');
-$field_valor->width = 150;
-$field_valor->isMoney();
+$field_valorP = new girafaGRID_field('ValorPrevisto', 'Vl. Previsto');
+$field_valorP->width = 150;
+$field_valorP->isMoney();
+
+$field_valorL = new girafaGRID_field('ValorLancado', 'Vl. Lançado');
+$field_valorL->width = 150;
+$field_valorL->isMoney();
 
 $field_pago = new girafaGRID_field('PAGO', 'Pago');
 $field_pago->alignCenter();
 $field_pago->width = 50;
 $field_pago->isCustom();
 
-$grid->addFields(array($field_descricao, $field_data, $field_valor, $field_pago));
+$grid->addFields(array($field_descricao, $field_data, $field_valorP, $field_valorL, $field_pago));
 
 $grid->PrintHTML();
 

@@ -11,7 +11,7 @@ $form->linkVoltar = GetLink(GetPage() . '/edit/' . GetParam(1));
 $box = new girafaFORM_box('Geral');
 
 $box->AddContent('<input type="hidden" name="Compromisso" value="' . base64_decode(GetParam(1)) . '">');
-$box->AddContent('<input type="hidden" name="Tipo" value="ENT">');
+$box->AddContent('<input type="hidden" name="Tipo" value="SAI">');
 
 //Data
 $html  = '<label class="col-sm-2 control-label">Data</label>';
