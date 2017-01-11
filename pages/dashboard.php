@@ -292,7 +292,7 @@ template_getFooter();
             $sql  = 'SELECT C.Tipo, YEAR(L.Data) ANO, MONTH(L.Data) MES, DAY(L.Data) DIA, WEEK(L.Data) SEMANA, SUM(L.Valor) SUBTOTAL';
             $sql .= " FROM FinanceiroLancamentos L";
             $sql .= ' JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
-            $sql .= " WHERE L.Igreja = 2 AND C.Igreja AND C.Tipo = 'SAI' AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
+            $sql .= " WHERE L.Igreja = " . $login->church_id . " AND C.Igreja = " . $login->church_id . " AND C.Tipo = 'SAI' AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
             $sql .= ' GROUP BY ANO, SEMANA';
             $saidas = $db->LoadObjects($sql);
 
@@ -311,7 +311,7 @@ template_getFooter();
             $sql  = 'SELECT C.Tipo, YEAR(L.Data) ANO, MONTH(L.Data) MES, DAY(L.Data) DIA, WEEK(L.Data) SEMANA, SUM(L.Valor) SUBTOTAL';
             $sql .= " FROM FinanceiroLancamentos L";
             $sql .= ' JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
-            $sql .= " WHERE L.Igreja = 2 AND C.Igreja AND C.Tipo = 'ENT' AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
+            $sql .= " WHERE L.Igreja = " . $login->church_id . " AND C.Igreja = " . $login->church_id . " AND C.Tipo = 'ENT' AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
             $sql .= ' GROUP BY ANO, SEMANA';
 
             $entradas = $db->LoadObjects($sql);
