@@ -6,7 +6,7 @@ template_getHeader();
 $form = new girafaFORM('Financeiro - Transferências', 'financeiro-transferencias_action.php', 'FinanceiroTransferencias', 'Valor');
 
 $tipo = false;
-if(!empty(@$form->reg->DeConta)){
+if(!empty($form->reg->DeConta)){
     $tipo = 'CON';
 } elseif(!empty($form->reg->DeContaInterna)){
     $tipo = 'INT';
