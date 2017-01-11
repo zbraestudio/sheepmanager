@@ -9,13 +9,13 @@ function financeiroContaSaldo($idConta){
   $sql .= '  JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
   $sql .= "  WHERE L.Igreja = " . $login->church_id . " AND C.Igreja = " . $login->church_id . " AND L.Conta = " . $idConta;
 
-  $sql .= ' UNION ';
+  $sql .= ' UNION ALL';
 
   $sql .= '  SELECT SUM(Valor * -1) SUBTOTAL';
   $sql .= '  FROM FinanceiroTransferencias';
   $sql .= "  WHERE Igreja = " . $login->church_id . " AND DeConta = " . $idConta;
 
-  $sql .= ' UNION ';
+  $sql .= ' UNION ALL';
 
   $sql .= '  SELECT SUM(Valor) SUBTOTAL';
   $sql .= '  FROM FinanceiroTransferencias';
