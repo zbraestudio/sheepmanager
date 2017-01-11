@@ -1,6 +1,4 @@
 <?
-$login->verify();
-
 set_config('TITLE', 'Painel');
 template_getHeader();
 ?>
@@ -137,28 +135,36 @@ template_getHeader();
                                         <div class="flot-chart-content" id="flot-dashboard-chart"></div>
                                     </div>
                                 </div>
+
+                                <?
+                                $emConta = financeiroContaSaldo();
+                                $totalEntradas = financeiroTotalEntradaUltimos3meses();
+                                $totalSaidas = financeiroTotalSaidasUltimos3meses();
+
+
+                                ?>
                                 <div class="col-lg-3">
                                     <ul class="stat-list">
                                         <li>
-                                            <h2 class="no-margins ">R$2.000,00</h2>
-                                            <small style="color: #1ab394;">Em conta</small>
+                                            <h2 class="no-margins ">R$ <?= number_format($emConta, 2, ',', '.'); ?></h2>
+                                            <span class="label label-info">Em conta</span>
 
                                         </li>
                                         <li>
-                                            <h2 class="no-margins">R$5.543,00</h2>
-                                            <small>Total de Entradas</small>
-                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
-                                            <div class="progress progress-mini">
+                                            <h2 class="no-margins">R$ <?= number_format($totalEntradas, 2, ',', '.'); ?></h2>
+                                            <span class="label label-success">Total de Entradas (últ. 3 meses)</span>
+                                            <!--<div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>-->
+                                            <!--<div class="progress progress-mini">
                                                 <div style="width: 48%;background-color: #1c84c6;" class="progress-bar"></div>
-                                            </div>
+                                            </div>-->
                                         </li>
                                         <li>
-                                            <h2 class="no-margins ">R$2.123,02</h2>
-                                            <small>Total de Saídas</small>
-                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
-                                            <div class="progress progress-mini">
+                                            <h2 class="no-margins ">R$ <?= number_format($totalSaidas, 2, ',', '.'); ?></h2>
+                                            <span class="label label-danger">Total de Saídas (últ. 3 meses)</span>
+                                            <!--<div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>-->
+                                            <!--<div class="progress progress-mini">
                                                 <div style="width: 60%; background-color: #ed5565;" class="progress-bar"></div>
-                                            </div>
+                                            </div>-->
                                         </li>
 
                                     </ul>
@@ -281,33 +287,50 @@ template_getFooter();
             size: 80
         });
 
-        var data2 = [
-            [gd(2012, 1, 1), 7], [gd(2012, 1, 2), 6], [gd(2012, 1, 3), 4], [gd(2012, 1, 4), 8],
-            [gd(2012, 1, 5), 9], [gd(2012, 1, 6), 7], [gd(2012, 1, 7), 5], [gd(2012, 1, 8), 4],
-            [gd(2012, 1, 9), 7], [gd(2012, 1, 10), 8], [gd(2012, 1, 11), 9], [gd(2012, 1, 12), 6],
-            [gd(2012, 1, 13), 4], [gd(2012, 1, 14), 5], [gd(2012, 1, 15), 11], [gd(2012, 1, 16), 8],
-            [gd(2012, 1, 17), 8], [gd(2012, 1, 18), 11], [gd(2012, 1, 19), 11], [gd(2012, 1, 20), 6],
-            [gd(2012, 1, 21), 6], [gd(2012, 1, 22), 8], [gd(2012, 1, 23), 11], [gd(2012, 1, 24), 13],
-            [gd(2012, 1, 25), 7], [gd(2012, 1, 26), 9], [gd(2012, 1, 27), 9], [gd(2012, 1, 28), 8],
-            [gd(2012, 1, 29), 5], [gd(2012, 1, 30), 8], [gd(2012, 1, 31), 25]
-        ];
+        var data_saidas =
+            [<?
+            $sql  = 'SELECT C.Tipo, YEAR(L.Data) ANO, MONTH(L.Data) MES, DAY(L.Data) DIA, WEEK(L.Data) SEMANA, SUM(L.Valor) SUBTOTAL';
+            $sql .= " FROM FinanceiroLancamentos L";
+            $sql .= ' JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
+            $sql .= " WHERE L.Igreja = 2 AND C.Igreja AND C.Tipo = 'SAI' AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
+            $sql .= ' GROUP BY ANO, SEMANA';
+            $saidas = $db->LoadObjects($sql);
 
-        var data3 = [
-            [gd(2012, 1, 1), 800], [gd(2012, 1, 2), 500], [gd(2012, 1, 3), 600], [gd(2012, 1, 4), 700],
-            [gd(2012, 1, 5), 500], [gd(2012, 1, 6), 456], [gd(2012, 1, 7), 800], [gd(2012, 1, 8), 589],
-            [gd(2012, 1, 9), 467], [gd(2012, 1, 10), 876], [gd(2012, 1, 11), 689], [gd(2012, 1, 12), 700],
-            [gd(2012, 1, 13), 500], [gd(2012, 1, 14), 600], [gd(2012, 1, 15), 700], [gd(2012, 1, 16), 786],
-            [gd(2012, 1, 17), 345], [gd(2012, 1, 18), 888], [gd(2012, 1, 19), 888], [gd(2012, 1, 20), 888],
-            [gd(2012, 1, 21), 987], [gd(2012, 1, 22), 444], [gd(2012, 1, 23), 999], [gd(2012, 1, 24), 567],
-            [gd(2012, 1, 25), 786], [gd(2012, 1, 26), 666], [gd(2012, 1, 27), 888], [gd(2012, 1, 28), 900],
-            [gd(2012, 1, 29), 178], [gd(2012, 1, 30), 555], [gd(2012, 1, 31), 993]
-        ];
+            foreach($saidas as $x=>$saida){
+
+            if($x > 0)
+              echo(',');
+
+              echo('[gd(' . $saida->ANO . ', ' . $saida->MES . ', ' . date('d', StartOfDayWeek($saida->SEMANA, $saida->ANO)) . '), ' . $saida->SUBTOTAL . ']');
+
+            }
+            ?>];
+
+        var data_entradas =
+            [<?
+            $sql  = 'SELECT C.Tipo, YEAR(L.Data) ANO, MONTH(L.Data) MES, DAY(L.Data) DIA, WEEK(L.Data) SEMANA, SUM(L.Valor) SUBTOTAL';
+            $sql .= " FROM FinanceiroLancamentos L";
+            $sql .= ' JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
+            $sql .= " WHERE L.Igreja = 2 AND C.Igreja AND C.Tipo = 'ENT' AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
+            $sql .= ' GROUP BY ANO, SEMANA';
+
+            $entradas = $db->LoadObjects($sql);
+
+            foreach($entradas as $x=>$entrada){
+
+            if($x > 0)
+              echo(',');
+
+              echo('[gd(' . $entrada->ANO . ', ' . $entrada->MES . ', ' . date('d', StartOfDayWeek($saida->SEMANA, $saida->ANO)) . '), ' . $entrada->SUBTOTAL . ']');
+
+            }
+            ?>];
 
 
         var dataset = [
             {
                 label: "Entradas",
-                data: data3,
+                data: data_entradas,
                 color: "#1c84c6",
                 lines: {
                     lineWidth: 1,
@@ -324,7 +347,7 @@ template_getFooter();
 
             }, {
                 label: "Saídas",
-                data: data2,
+                data: data_saidas,
                 yaxis: 2,
                 color: "#ed5565",
                 lines: {

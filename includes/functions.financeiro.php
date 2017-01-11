@@ -1,5 +1,5 @@
 <?
-function financeiroContaSaldo($idConta){
+function financeiroContaSaldo($idConta = 0){
 
   global $login, $db;
 
@@ -7,19 +7,28 @@ function financeiroContaSaldo($idConta){
   $sql .= "  SELECT SUM(IF(C.Tipo = 'ENT', L.Valor, L.Valor * -1)) SUBTOTAL";
   $sql .= '  FROM FinanceiroLancamentos L';
   $sql .= '  JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
-  $sql .= "  WHERE L.Igreja = " . $login->church_id . " AND C.Igreja = " . $login->church_id . " AND L.Conta = " . $idConta;
+  $sql .= "  WHERE L.Igreja = " . $login->church_id . " AND C.Igreja = " . $login->church_id;
+
+  if($idConta > 0)
+    $sql .= " AND L.Conta = " . $idConta;
 
   $sql .= ' UNION ALL';
 
   $sql .= '  SELECT SUM(Valor * -1) SUBTOTAL';
   $sql .= '  FROM FinanceiroTransferencias';
-  $sql .= "  WHERE Igreja = " . $login->church_id . " AND DeConta = " . $idConta;
+  $sql .= "  WHERE Igreja = " . $login->church_id;
+
+  if($idConta > 0)
+    $sql .= " AND DeConta = " . $idConta;
 
   $sql .= ' UNION ALL';
 
   $sql .= '  SELECT SUM(Valor) SUBTOTAL';
   $sql .= '  FROM FinanceiroTransferencias';
-  $sql .= "  WHERE Igreja = " . $login->church_id . " AND ParaConta = " . $idConta;
+  $sql .= "  WHERE Igreja = " . $login->church_id;
+
+  if($idConta > 0)
+    $sql .= " AND ParaConta = " . $idConta;
 
   $sql .= ') `x`';
 
@@ -89,5 +98,35 @@ function financeiroFechaCompromisso($idCompromisso){
 
   $db->Execute($post->GetSql());
 
+}
+
+
+function financeiroTotalEntradaUltimos3meses(){
+
+  global $login, $db;
+
+  $sql = "SELECT SUM(L.Valor) TOTAL";
+  $sql .= ' FROM FinanceiroLancamentos L';
+  $sql .= ' JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
+  $sql .= " WHERE L.Igreja = " . $login->church_id . " AND (C.Tipo = 'ENT') AND C.Igreja = " . $login->church_id;
+  $sql .= " AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
+
+  $res = $db->LoadObjects($sql);
+
+  return floatval($res[0]->TOTAL);
+}
+function financeiroTotalSaidasUltimos3meses(){
+
+  global $login, $db;
+
+  $sql = "SELECT SUM(L.Valor) TOTAL";
+  $sql .= ' FROM FinanceiroLancamentos L';
+  $sql .= ' JOIN FinanceiroCompromissos C ON(C.ID = L.Compromisso)';
+  $sql .= " WHERE L.Igreja = " . $login->church_id . " AND (C.Tipo = 'SAI') AND C.Igreja = " . $login->church_id;
+  $sql .= " AND L.Data > '" . date("Y-m-d", strtotime("-3 month")) . "'";
+
+  $res = $db->LoadObjects($sql);
+
+  return floatval($res[0]->TOTAL);
 }
 ?>

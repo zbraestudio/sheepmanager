@@ -118,4 +118,12 @@ function LoadRecord($table, $value, $fieldName = 'ID'){
     return $res[0];
 }
 
+function StartOfDayWeek($nroSemana, $ano){
+
+  $day = strtotime($ano . '-01-01 +' . ($nroSemana-1) .  ' week');
+  return $day;
+
+  die($day);
+}
+
 ?>
