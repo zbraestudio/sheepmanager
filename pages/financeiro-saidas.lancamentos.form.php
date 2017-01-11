@@ -34,7 +34,7 @@ $sql .= " WHERE Igreja = " . $login->church_id;
 $sql .= ' ORDER BY Nome ASC';
 $contas = $db->LoadObjects($sql);
 foreach($contas as $conta)
-  $options[$conta->ID] = $conta->Nome;
+  $options[$conta->ID] = $conta->Nome . ' (saldo: R$' . number_format(financeiroContaSaldo($conta->ID), 2, ',', '.') . ')';
 
 $html .= '<div class="col-sm-5">' . form_field_list('Conta', $options, @$form->reg->Conta) .'</div>';
 $box->AddContent($html);
@@ -51,7 +51,7 @@ $sql .= " WHERE Igreja = " . $login->church_id;
 $sql .= ' ORDER BY Nome ASC';
 $contas = $db->LoadObjects($sql);
 foreach($contas as $conta){
-  $options[$conta->ID] = $conta->Nome;
+  $options[$conta->ID] = $conta->Nome . ' (saldo: R$' . number_format(financeiroContaInternaSaldo($conta->ID), 2, ',', '.') . ')';
 }
 
 
