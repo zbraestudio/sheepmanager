@@ -282,10 +282,7 @@ class girafaGRID
 
             //macro..
             if (function_exists('macro_grid_before')) {
-              $return = macro_grid_before($field->field, $reg);
-
-              if(!empty($return))
-                $value = $return;
+              $value = macro_grid_before($field->field, $reg);
 
             }
 
