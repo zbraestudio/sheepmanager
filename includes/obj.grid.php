@@ -106,25 +106,26 @@ class girafaGRID
     ?>
 
 
-
-      <div class="row wrapper border-bottom white-bg page-heading table-header">
-        <div class="col-lg-10">
-          <h2><?= $this->title; ?></h2>
-          <ol class="breadcrumb">
-            <li>
-              <a><?= $this->title; ?></a>
-            </li>
-            <li class="active">
-              <strong>Ver todos</strong>
-            </li>
-          </ol>
-        </div>
-        <div class="col-lg-2">
-          <a href="<?= GetLink(GetPage() . '/add'); ?>" class="btn btn-success btn-novo pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Novo</a>
-        </div>
+    <div class="row wrapper border-bottom white-bg page-heading table-header">
+      <div class="col-lg-10">
+        <h2><?= $this->title; ?></h2>
+        <ol class="breadcrumb">
+          <li>
+            <a><?= $this->title; ?></a>
+          </li>
+          <li class="active">
+            <strong>Ver todos</strong>
+          </li>
+        </ol>
       </div>
+      <div class="col-lg-2">
+        <a href="<?= GetLink(GetPage() . '/add'); ?>" class="btn btn-success btn-novo pull-right"><i class="fa fa-plus"
+                                                                                                     aria-hidden="true"></i>
+          Novo</a>
+      </div>
+    </div>
 
-      <?
+    <?
     if (isset($_SESSION['grid_msg'])) {
       ?>
       <div class="wrapper wrapper-content msg-form">
@@ -144,237 +145,239 @@ class girafaGRID
     }
     ?>
 
-      <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content animated fadeInRight">
       <div class="row">
-              <div class="col-lg-12">
-                  <div class="ibox float-e-margins">
+        <div class="col-lg-12">
+          <div class="ibox float-e-margins">
 
-                      <div class="ibox-content grid">
-                          <div class="row">
-                              <form action="<?= GetLink(GetPage()); ?>" method="post" id="filters">
-                                  <div class="col-sm-4 col-sm-offset-5 m-b-xs">
-                                  <?
-    if (count($this->filters) > 0) {
-      ?>
-      <select class="input-sm form-control input-s-sm inline" id="filter_list"
-              name="filter_list" placeholder="Faça um filtro...">
-        <option value="">Todos os registros</option>
+            <div class="ibox-content grid">
+              <div class="row">
+                <form action="<?= GetLink(GetPage()); ?>" method="post" id="filters">
+                  <div class="col-sm-4 col-sm-offset-5 m-b-xs">
+                    <?
+                    if (count($this->filters) > 0) {
+                      ?>
+                      <select class="input-sm form-control input-s-sm inline" id="filter_list"
+                              name="filter_list" placeholder="Faça um filtro...">
+                        <option value="">Todos os registros</option>
 
-        <?
+                        <?
 
-        foreach ($this->filters as $filter) {
-          ?>
-          <option value="<?= $filter['sqlWhere']; ?>" <?
+                        foreach ($this->filters as $filter) {
+                          ?>
+                          <option value="<?= $filter['sqlWhere']; ?>" <?
 
-          if (isset($_POST['filter_list'])) {
+                          if (isset($_POST['filter_list'])) {
 
-            if ($_POST['filter_list'] == $filter['sqlWhere']) {
-              echo(' selected');
-            }
+                            if ($_POST['filter_list'] == $filter['sqlWhere']) {
+                              echo(' selected');
+                            }
 
-          } elseif ($filter['default']) {
-            echo(' selected');
-          }
-
-
-          ?>><?= $filter['legend']; ?></option>
-        <?
-        }
-        ?>
-
-      </select>
-
-    <?
-    }
-    ?>
-                                  </div>
-
-                                  <div class="col-sm-3">
-                                      <div class="input-group">
-                                      <input type="text" name="s" id="s" placeholder="Pesquisar" value="<?= @$_POST['s']; ?>" class="input-sm form-control"> <span class="input-group-btn">
-                                      <button type="submit" class="btn btn-sm btn-primary"> <i class="fa fa-search" aria-hidden="true"></i></button> </span></div>
-                                  </div>
-                              </form>
-                          </div>
-                          <div class="table-responsive">
-                              <table class="table table-striped">
-                                  <thead>
-                                  <tr>
-                                      <?
-    /* LEGENDAS */
-    foreach ($this->fields as $legenda) {
-
-      switch ($legenda->align) {
-        case 'L':
-        default:
-          $align = 'left';
-          break;
-        case 'C':
-          $align = 'center';
-          break;
-        case 'R':
-          $align = 'right';
-          break;
-      }
-
-      if($legenda->type == 'money'){
-        if(empty($legenda->align))
-          $align = 'right';
-
-      } elseif($legenda->type == 'date'){
-
-        if(empty($legenda->align))
-          $align = 'center';
-
-        if(empty($legenda->width))
-          $legenda->width = 135;
-
-      }
-
-      echo('<th style="text-align: ' . $align . ';' . (($legenda->width > 0) ? 'width:' . $legenda->width . 'px;' : null) . '">');
-      echo($legenda->legend);
-
-      if (!empty($legenda->order))
-        echo(' <i class="fa fa-caret-' . ($legenda->order == 'ASC' ? 'up' : 'down') . '" aria-hidden="true"></i>');
-
-      echo('</th>');
-    }
-    ?>
-                                      <th style="width: 80px;text-align: center;">Ações</th>
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                  <?
-
-    //registros
-    $this->load();
-
-    if (count($this->reg) == 0) {
-      echo('<td colspan="' . (count($this->fields) + 1) . '" style="text-align: center;">Nenhum registro encontrado.</td>');
-    } else {
-
-      foreach ($this->reg as $reg) {
-
-        $id = $reg->ID;
-
-        echo('<tr>');
-
-        foreach ($this->fields as $field) {
-
-          switch ($field->align) {
-            case 'L':
-            default:
-              $align = 'left';
-              break;
-            case 'C':
-              $align = 'center';
-              break;
-            case 'R':
-              $align = 'right';
-              break;
-          }
+                          } elseif ($filter['default']) {
+                            echo(' selected');
+                          }
 
 
+                          ?>><?= $filter['legend']; ?></option>
+                          <?
+                        }
+                        ?>
 
-          if ($field->type == 'custom') {
+                      </select>
 
-            $value = $field->field;
-
-            //macro..
-            if (function_exists('macro_grid_before')) {
-              $value = macro_grid_before($field->field, $reg);
-
-            }
-
-
-          } elseif ($field->type == 'mail') {
-
-            $fieldName = $field->field;
-            $value = $value = $reg->$fieldName;
-            $value = '<a href="mailto:' . $value . '">' . $value . '</a>';
-
-          } elseif ($field->type == 'list') {
-
-            $fieldName = $field->field;
-            $value = $reg->$fieldName;
-
-            if (isset($field->type_list_options[$value]))
-              $value = $field->type_list_options[$value];
-
-          } elseif ($field->type == 'money') {
-
-            $fieldName = $field->field;
-            $value = $reg->$fieldName;
-
-            if(empty($field->align))
-              $align = 'right';
-
-            $value = 'R$ ' . $value;
-
-
-          } elseif($field->type == 'date') {
-
-            $fieldName = $field->field;
-            $value = $reg->$fieldName;
-
-            if(!empty($value)) {
-              $data = new girafaDate($value);
-              $value = $data->GetFullDateForShorten() . ' (' . $data->GetDayOfWeekShorten() . ')';
-            }
-
-            if (empty($field->align))
-              $align = 'center';
-
-          } elseif($field->type == 'table'){
-            $fieldName = $field->field;
-            $value = $reg->$fieldName;
-
-            if(!empty($value)){
-
-              $r = LoadRecord($field->type_table_name, $value);
-              $fieldName = $field->type_table_fieldname;
-              $value = $r->$fieldName;
-
-            }
-
-          } else {
-
-
-            $fieldName = $field->field;
-            $value = $reg->$fieldName;
-          }
-
-          echo('<td style="text-align:' . $align . ';">');
-          echo($value);
-          echo('</td>');
-        }
-
-        //Ações
-        echo('  <td class="grid_action" style="text-align: center;">');
-        echo('<a href="' . GetLink(GetPage() . '/edit/' . base64_encode($id)) . '"><i class="fa fa-pencil" aria-hidden="true"></i></a>');
-        echo('<a href="' . GetLink(GetPage() . '/del/' . base64_encode($id)) . '" data-toggle="confirmation" data-popout="true" data-singleton="true" data-title="Tem certeza que deseja excluir esse registro?"><i class="fa fa fa-trash" aria-hidden="true"></i></a>');
-        echo('  </td>' . "\r\n");
-
-        echo('</tr>');
-      }
-      ?>
-
-                                  </tbody>
-
-
-                              </table>
-                          </div>
-
-                      </div>
+                      <?
+                    }
+                    ?>
                   </div>
+
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <input type="text" name="s" id="s" placeholder="Pesquisar" value="<?= @$_POST['s']; ?>"
+                             class="input-sm form-control"> <span class="input-group-btn">
+                                      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-search"
+                                                                                              aria-hidden="true"></i>
+                                      </button> </span></div>
+                  </div>
+                </form>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <?
+                    /* LEGENDAS */
+                    foreach ($this->fields as $legenda) {
+
+                      switch ($legenda->align) {
+                        case 'L':
+                        default:
+                          $align = 'left';
+                          break;
+                        case 'C':
+                          $align = 'center';
+                          break;
+                        case 'R':
+                          $align = 'right';
+                          break;
+                      }
+
+                      if ($legenda->type == 'money') {
+                        if (empty($legenda->align))
+                          $align = 'right';
+
+                      } elseif ($legenda->type == 'date') {
+
+                        if (empty($legenda->align))
+                          $align = 'center';
+
+                        if (empty($legenda->width))
+                          $legenda->width = 135;
+
+                      }
+
+                      echo('<th style="text-align: ' . $align . ';' . (($legenda->width > 0) ? 'width:' . $legenda->width . 'px;' : null) . '">');
+                      echo($legenda->legend);
+
+                      if (!empty($legenda->order))
+                        echo(' <i class="fa fa-caret-' . ($legenda->order == 'ASC' ? 'up' : 'down') . '" aria-hidden="true"></i>');
+
+                      echo('</th>');
+                    }
+                    ?>
+                    <th style="width: 80px;text-align: center;">Ações</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?
+
+                  //registros
+                  $this->load();
+
+                  if (count($this->reg) == 0) {
+                    echo('<td colspan="' . (count($this->fields) + 1) . '" style="text-align: center;">Nenhum registro encontrado.</td>');
+                  } else {
+
+                    foreach ($this->reg as $reg) {
+
+                      $id = $reg->ID;
+
+                      echo('<tr>');
+
+                      foreach ($this->fields as $field) {
+
+                        switch ($field->align) {
+                          case 'L':
+                          default:
+                            $align = 'left';
+                            break;
+                          case 'C':
+                            $align = 'center';
+                            break;
+                          case 'R':
+                            $align = 'right';
+                            break;
+                        }
+
+
+                        if ($field->type == 'custom') {
+
+                          $value = $field->field;
+
+                          //macro..
+                          if (function_exists('macro_grid_before')) {
+                            $value = macro_grid_before($field->field, $reg);
+
+                          }
+
+
+                        } elseif ($field->type == 'mail') {
+
+                          $fieldName = $field->field;
+                          $value = $value = $reg->$fieldName;
+                          $value = '<a href="mailto:' . $value . '">' . $value . '</a>';
+
+                        } elseif ($field->type == 'list') {
+
+                          $fieldName = $field->field;
+                          $value = $reg->$fieldName;
+
+                          if (isset($field->type_list_options[$value]))
+                            $value = $field->type_list_options[$value];
+
+                        } elseif ($field->type == 'money') {
+
+                          $fieldName = $field->field;
+                          $value = $reg->$fieldName;
+
+                          if (empty($field->align))
+                            $align = 'right';
+
+                          $value = 'R$ ' . $value;
+
+
+                        } elseif ($field->type == 'date') {
+
+                          $fieldName = $field->field;
+                          $value = $reg->$fieldName;
+
+                          if (!empty($value)) {
+                            $data = new girafaDate($value);
+                            $value = $data->GetFullDateForShorten() . ' (' . $data->GetDayOfWeekShorten() . ')';
+                          }
+
+                          if (empty($field->align))
+                            $align = 'center';
+
+                        } elseif ($field->type == 'table') {
+                          $fieldName = $field->field;
+                          $value = $reg->$fieldName;
+
+                          if (!empty($value)) {
+
+                            $r = LoadRecord($field->type_table_name, $value);
+                            $fieldName = $field->type_table_fieldname;
+                            $value = $r->$fieldName;
+
+                          }
+
+                        } else {
+
+
+                          $fieldName = $field->field;
+                          $value = $reg->$fieldName;
+                        }
+
+                        echo('<td style="text-align:' . $align . ';">');
+                        echo($value);
+                        echo('</td>');
+                      }
+
+                      //Ações
+                      echo('  <td class="grid_action" style="text-align: center;">');
+                      echo('<a href="' . GetLink(GetPage() . '/edit/' . base64_encode($id)) . '"><i class="fa fa-pencil" aria-hidden="true"></i></a>');
+                      echo('<a href="' . GetLink(GetPage() . '/del/' . base64_encode($id)) . '" data-toggle="confirmation" data-popout="true" data-singleton="true" data-title="Tem certeza que deseja excluir esse registro?"><i class="fa fa fa-trash" aria-hidden="true"></i></a>');
+                      echo('  </td>' . "\r\n");
+
+                      echo('</tr>');
+                    }
+                  }
+                  ?>
+
+                  </tbody>
+
+                </table>
               </div>
 
+            </div>
           </div>
-      </div>
-  </div>
-      <?
+        </div>
 
-    }
+      </div>
+    </div>
+
+    <?
+
+
   }
 
 }
