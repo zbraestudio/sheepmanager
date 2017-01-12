@@ -250,7 +250,7 @@ class girafaGRID
     $this->load();
 
     if (count($this->reg) == 0) {
-      echo('<td colspan="' . count($this->fields) . '" style="text-align: center;">Nenhum registro encontrado.</td>');
+      echo('<td colspan="' . (count($this->fields) + 1) . '" style="text-align: center;">Nenhum registro encontrado.</td>');
     } else {
 
       foreach ($this->reg as $reg) {
