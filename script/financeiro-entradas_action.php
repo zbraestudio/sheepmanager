@@ -8,6 +8,7 @@ $login->verify();
 $data             = dataDDMMYYYYtoYYYYMMDD($_POST['data']);
 $valor            = decimalToDB($_POST['valorPrevisto']);
 $descricao        = trim($_POST['descricao']);
+$observacoes      = trim($_POST['observacoes']);
 $tipoDeConta      = intval($_POST['tipoDeConta']);
 $situacao         = trim($_POST['situacao']);
 
@@ -25,6 +26,7 @@ $post->AddFieldString('Tipo', 'ENT');
 $post->AddFieldString('Data',                   $data);
 $post->AddFieldString('ValorPrevisto',          $valor);
 $post->AddFieldString('Descricao',              $descricao);
+$post->AddFieldString('Observacoes',            $observacoes);
 $post->AddFieldString('TipoDeConta',            $tipoDeConta);
 $post->AddFieldString('Situacao',               $situacao);
 

@@ -14,7 +14,8 @@ form{
     }
 
     input.form-control,
-    select.form-control{
+    select.form-control,
+    textarea.form-control{
 
       &:required{
 
@@ -126,4 +127,18 @@ small.label{
   i{
     font-size: 15px!important;
   }
+}
+
+
+.baixar-lancamento {
+  cursor: pointer;
+  opacity: 0.3;
+  filter: alpha(opacity=30); /* For IE8 and earlier */
+
+  &[pago=sim]{
+    opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+    color: #337ab7!important;
+  }
+
 }

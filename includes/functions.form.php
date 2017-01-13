@@ -42,6 +42,28 @@ function form_field_html($name, $value, $default = null, $required = true, $clas
   return $html;
 }
 
+function form_field_textarea($name, $value, $default = null, $required = true, $class = null, $height = 200){
+
+  $html  = '<textarea';
+  $html .= ' name="' . $name . '"';
+  $html .= ' class="form-control ' . $class . '"';
+  $html .= ' style="height:' . $height . 'px;"';
+
+  if($required)
+    $html .= ' required ';
+
+  $html .= '>';
+
+  if(GetParam(GetParamsCount()-1) == 'add')
+    $value = $default;
+
+  $html .= $value;
+
+  $html .= '</textarea>';
+
+  return $html;
+}
+
 
 function form_field_integer($name, $value, $default = null, $min = 0, $max = 9999, $required = true, $class = null){
 

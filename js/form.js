@@ -124,3 +124,36 @@ $(document).ready(function(){
 
 
 });
+
+
+$(document).ready(function(){
+
+  $('.baixar-lancamento').click(function(){
+
+    var item = $(this);
+
+    var lancamentoID = item.attr('lancamento');
+    var pagar = item.attr('pago');
+
+    $.ajax({
+      type: "POST",
+      url: site_url + 'script/ajax.baixa-lancamento.php',
+      data: { lancamentoID: lancamentoID, pagar: pagar },
+      success: function(data){
+        if(data != ''){
+
+          if(pagar == 'sim'){
+            item.attr('pago', 'nao');
+          } else {
+            item.attr('pago', 'sim');
+          }
+
+        }
+      }
+    });
+
+  });
+
+
+
+});

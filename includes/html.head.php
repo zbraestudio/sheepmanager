@@ -90,4 +90,9 @@
     <script src="<?= get_config('SITE_URL'); ?>js/form.js"></script>
     <script src="<?= get_config('SITE_URL'); ?>js/grid.js"></script>
 
+
+    <script>
+        var site_url = '<?= get_config('SITE_URL'); ?>';
+    </script>
+
 </head>

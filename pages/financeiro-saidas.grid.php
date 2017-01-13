@@ -7,7 +7,21 @@ $grid->sqlWheres = "Tipo = 'SAI'";
 $grid->AddFilter('Contas Pagas', "Situacao = 'PAG'");
 $grid->AddFilter('Contas Pendentes', "Situacao = 'NAO'");
 
-$field_descricao = new girafaGRID_field('Descricao');
+
+$field_tipo = new girafaGRID_field('TipoDeConta', 'Tipo de Conta');
+
+$sql  = 'SELECT * FROM FinanceiroTiposDeConta';
+$sql .= ' WHERE Igreja = ' . $login->church_id . " AND TIPO = 'SAI'";
+$sql .= ' ORDER BY Nome ASC';
+$tipos = $db->LoadObjects($sql);
+
+foreach($tipos as $tipo){
+  $options[$tipo->ID] = $tipo->Nome;
+}
+$field_tipo->isList($options);
+
+
+//  $field_descricao = new girafaGRID_field('Descricao');
 
 $field_data = new girafaGRID_field('Data');
 $field_data->isDate();
@@ -26,7 +40,7 @@ $field_pago->alignCenter();
 $field_pago->width = 50;
 $field_pago->isCustom();
 
-$grid->addFields(array($field_descricao, $field_data, $field_valorP, $field_valorL, $field_pago));
+$grid->addFields(array($field_tipo, $field_data, $field_valorP, $field_valorL, $field_pago));
 
 $grid->PrintHTML();
 

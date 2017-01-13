@@ -31,11 +31,12 @@ if(isset($form->reg->ID)) {
 
 $box->AddContentBreakLine();
 
+/*
 //Descrição
 $html  = '<label class="col-sm-2 control-label">Descrição</label>';
 $html .= '<div class="col-sm-10">' . form_field_string('descricao', @$form->reg->Descricao, 100) .'</div>';
 $box->AddContent($html);
-
+*/
 
 $box->AddContentBreakLine();
 
@@ -79,6 +80,12 @@ if(!empty($form->reg->ID)) {
 }
 $form->AddBox($box);
 
+/* OBSERVAÇÔES */
+$box = new girafaFORM_box('Observações');
+$html = '<div class="col-sm-12">' . form_field_textarea('obsercacoes', @$form->reg->Observacoes, null, false, null, 200) . '</div>';
+$box->AddContent($html);
+
+$form->AddBox($box);
 
 if(!empty($form->reg->ID)) {
   $box = new girafaFORM_box('Lançamentos');
@@ -92,6 +99,7 @@ if(!empty($form->reg->ID)) {
   $html .= '                                <th>Conta Interna</th>';
   $html .= '                                <th style="text-align: center;">Referente a</th>';
   $html .= '                                <th  style="text-align: right;">Valor</th>';
+  $html .= '                                <th style="text-align: center;">Lançado</th>';
   $html .= '                                <th  style="text-align: center;">Ações</th>';
   $html .= '                            </tr>';
   $html .= '                            </thead>';
@@ -123,7 +131,8 @@ if(!empty($form->reg->ID)) {
       $html .= '                                <td>' . $conta->Nome . '</td>';
       $html .= '                                <td>' . $contaInterna->Nome . '</td>';
       $html .= '                                <td class="text-navy"  style="text-align: center;"> ' . number_format($perc, 1, ',', '.') . '% </td>';
-      $html .= '                                <td  style="text-align: right;"> R$ ' . number_format($valor, 2, ',', '.') . '</td>';
+      $html .= '                                <td style="text-align: right;"> R$ ' . number_format($valor, 2, ',', '.') . '</td>';
+      $html .= '                                <td style="text-align: center;"><i class="fa fa-check baixar-lancamento" pago="' . ($lancamento->Situacao == 'PAG'?'sim':'nao') . '" lancamento="' . $lancamento->ID . '" aria-hidden="true"></i></td>';
 
       $html .= '                                <td  style="text-align: center;">';
       $html .= '                                  <a href="' . GetLink(GetPage() . '/edit/' . GetParam(1) . '/lancamento/edit/' . base64_encode($lancamento->ID)) . '"><i class="fa fa-pencil" aria-hidden="true"></i></a>';

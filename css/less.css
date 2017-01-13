@@ -48,7 +48,8 @@ form .input-group.date {
   margin-bottom: 10px;
 }
 form input.form-control:required,
-form select.form-control:required {
+form select.form-control:required,
+form textarea.form-control:required {
   background-color: #eafcf8;
 }
 form .btn-actions {
@@ -117,6 +118,18 @@ small.label {
 }
 small.label i {
   font-size: 15px!important;
+}
+.baixar-lancamento {
+  cursor: pointer;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  /* For IE8 and earlier */
+}
+.baixar-lancamento[pago=sim] {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  /* For IE8 and earlier */
+  color: #337ab7!important;
 }
 body.pg_login img.logo {
   margin: 50px 0;

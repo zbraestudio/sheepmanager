@@ -30,12 +30,12 @@ if(isset($form->reg->ID)) {
 }
 
 $box->AddContentBreakLine();
-
+/*
 //Descrição
 $html  = '<label class="col-sm-2 control-label">Descrição</label>';
 $html .= '<div class="col-sm-10">' . form_field_string('descricao', @$form->reg->Descricao, 100) .'</div>';
 $box->AddContent($html);
-
+*/
 
 $box->AddContentBreakLine();
 
@@ -77,6 +77,13 @@ if(!empty($form->reg->ID)) {
   $box->AddContent($html);
 
 }
+
+$form->AddBox($box);
+
+/* OBSERVAÇÔES */
+$box = new girafaFORM_box('Observações');
+$html = '<div class="col-sm-12">' . form_field_textarea('obsercacoes', @$form->reg->Observacoes, null, false, null, 200) . '</div>';
+$box->AddContent($html);
 
 $form->AddBox($box);
 
